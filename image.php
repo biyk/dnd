@@ -6,8 +6,6 @@ foreach ($files as $filename) {
   $result[$time] = $filename;
 }
 ksort($result);
-foreach ($result as $file) {
-	header ('Content-Type: image/png');
-  echo file_get_contents($file);
-  die;
-}
+
+header ('Content-Type: image/png');
+echo file_get_contents(end($result));
