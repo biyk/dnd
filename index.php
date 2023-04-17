@@ -1,47 +1,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
-<style>
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
 
-    .container {
-        margin: auto;
-        width: 400px;
-        position: absolute;
-        z-index: 1;
-        top: -60px;
-        left: -140px;
-    }
-
-    .container svg{
-        transform: scale(0.3);
-    }
-
-    .path--background {
-        fill: rgb(34, 213, 201);
-        stroke: #fff;
-        stroke-width: 0px;
-    }
-
-    .pulse {
-        fill: rgb(255, 74, 74) !important;
-    }
-
-    .path--foreground {
-        fill: #eee;
-        stroke: #eee;
-        stroke-width: 2px;
-    }
-
-    .label {
-        font: 90px "Open Sans";
-        font-weight: 900;
-        text-anchor: middle;
-        fill: rgb(34, 213, 201);
-    }
-
-
-</style>
+<link type="text/css" href="index.css">
 <div class="container"></div>
-<button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()" style="
+<div id="player"></div>
+<button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen();player.playVideo();" style="
  
     position: absolute;
     z-index:1;
@@ -60,176 +22,55 @@
 <script>
 setInterval(()=>{
 	let image = document.getElementById('image');
-	let url = 'image.png';
-	image.src='image.png'+'?'+Math.random();
+	let header =  makeRequest('HEAD','image.php');
+	header.then((result)=> {
+	    if (result===200) image.src='image.php'+'?'+Math.random();
+    }, ()=>{console.log('error')})
+
 }, 2000);
 
-function UrlExists(url)
-{
-    var http = new XMLHttpRequest();
-    http.open('HEAD', url, false);
-    http.send();
-    return http.status!=404;
-}
-
-function toggleFullScreen() {
-  if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
-   (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-    if (document.documentElement.requestFullScreen) {  
-      document.documentElement.requestFullScreen();  
-    } else if (document.documentElement.mozRequestFullScreen) {  
-      document.documentElement.mozRequestFullScreen();  
-    } else if (document.documentElement.webkitRequestFullScreen) {  
-      document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
-    }  
-  } else {  
-    if (document.cancelFullScreen) {  
-      document.cancelFullScreen();  
-    } else if (document.mozCancelFullScreen) {  
-      document.mozCancelFullScreen();  
-    } else if (document.webkitCancelFullScreen) {  
-      document.webkitCancelFullScreen();  
-    }  
-  }  
-}
 </script>
 
 <script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
 
-    function startTimer(){
-        var width = 400,
-            height = 400,
-            timePassed = 0,
-            timeLimit = 30;
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        var fields = [{
-            value: timeLimit,
-            size: timeLimit,
-            update: function() {
-                return timePassed = timePassed + 1;
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            videoId: 'MXhWSh8pTPA',
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
             }
-        }];
-
-        var nilArc = d3.svg.arc()
-            .innerRadius(width / 3 - 133)
-            .outerRadius(width / 3 - 133)
-            .startAngle(0)
-            .endAngle(2 * Math.PI);
-
-        var arc = d3.svg.arc()
-            .innerRadius(width / 3 - 55)
-            .outerRadius(width / 3 - 25)
-            .startAngle(0)
-            .endAngle(function(d) {
-                return ((d.value / d.size) * 2 * Math.PI);
-            });
-
-        var svg = d3.select(".container").append("svg")
-            .attr("width", width)
-            .attr("height", height);
-
-        var field = svg.selectAll(".field")
-            .data(fields)
-            .enter().append("g")
-            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
-            .attr("class", "field");
-
-        var back = field.append("path")
-            .attr("class", "path path--background")
-            .attr("d", arc);
-
-        var path = field.append("path")
-            .attr("class", "path path--foreground");
-
-        var label = field.append("text")
-            .attr("class", "label")
-            .attr("dy", ".35em");
-
-        (function update() {
-
-            field
-                .each(function(d) {
-                    d.previous = d.value, d.value = d.update(timePassed);
-                });
-
-            path.transition()
-                .ease("elastic")
-                .duration(500)
-                .attrTween("d", arcTween);
-
-            if ((timeLimit - timePassed) <= 10)
-                pulseText();
-            else
-                label
-                    .text(function(d) {
-                        return d.size - d.value;
-                    });
-
-            if (timePassed <= timeLimit)
-                setTimeout(update, 1000 - (timePassed % 1000));
-            else
-            {
-                //timePassed = 0
-                destroyTimer();
-            }
-
-        })();
-
-        function pulseText() {
-            back.classed("pulse", true);
-            label.classed("pulse", true);
-
-            if ((timeLimit - timePassed) >= 0) {
-                label.style("font-size", "120px")
-                    .attr("transform", "translate(0," + +4 + ")")
-                    .text(function(d) {
-                        return d.size - d.value;
-                    });
-            }
-
-            label.transition()
-                .ease("elastic")
-                .duration(900)
-                .style("font-size", "90px")
-                .attr("transform", "translate(0," + -10 + ")");
-        }
-
-        function destroyTimer() {
-            label.transition()
-                .ease("back")
-                .duration(700)
-                .style("opacity", "0")
-                .style("font-size", "5")
-                .attr("transform", "translate(0," + -40 + ")")
-                .each("end", function() {
-                    field.selectAll("text").remove()
-                });
-
-            path.transition()
-                .ease("back")
-                .duration(700)
-                .attr("d", nilArc);
-
-            back.transition()
-                .ease("back")
-                .duration(700)
-                .attr("d", nilArc)
-                .each("end", function() {
-                    field.selectAll("path").remove()
-                });
-
-            document.getElementsByClassName('container')[0].innerHTML = '';
-        }
-
-        function arcTween(b) {
-            var i = d3.interpolate({
-                value: b.previous
-            }, b);
-            return function(t) {
-                return arc(i(t));
-            };
-        }
+        });
     }
 
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+        //event.target.playVideo();
+        document.getElementById('player').style.display = 'none';
+    }
 
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    var done = false;
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+            player.playVideo();
+        }
+    }
+    function stopVideo() {
+        player.stopVideo();
+    }
 </script>
+<script src="index.js"></script>
