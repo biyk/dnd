@@ -2,8 +2,9 @@
 
 
 header('Content-Type: application/json; charset=utf-8');
-?>
-{
+echo file_get_contents('config.json');
+
+'{
 	"yid": "wSZ0j6eBRpg",
 	"videos":{
 		"relax":"wSZ0j6eBRpg",
@@ -13,4 +14,5 @@ header('Content-Type: application/json; charset=utf-8');
 		"cicyfight":"LnlddcV5bAY"
 	},
 	"locale":"relax"
-}
+}'
+?>

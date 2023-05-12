@@ -4,27 +4,14 @@
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-<div class="container"></div>
-<button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()" style="
 
-    position: absolute;
-    z-index:1;
-    font-size: 25px;
-
-">▢</button>
-<button type="button" value="click to toggle fullscreen" onclick="startTimer()" style="
-    top: 50px;
+<button type="button" value="click to toggle fullscreen" onclick="startListen()" style="
+    top: 93px;
     position: absolute;
     z-index:1;
     font-size: 25px;
 
 ">▶️</button>
-
-
-<img src="image.png" id="image" style="width: 100%;top: -7%;display: block;position: relative;">
-
-
-<div id="player" style="display:none"></div>
 
 <script>
     var videos = [];
@@ -70,47 +57,24 @@
         player.stopVideo();
     }
 
-    $(document).ready(function() {
-        setInterval(()=>{
-            let image = document.getElementById('image');
-            let url = 'image.png';
-            image.src='image.png'+'?'+Math.random();
+    setInterval(()=>{
+        let image = document.getElementById('image');
+        let url = 'image.png';
+        image.src='image.png'+'?'+Math.random();
 
-            $.ajax({
-                url:'config.php'+'?'+Math.random(),
-                dataType : "json",
-                success: function(json){
-                    console.log(json,yid)
-                    if (json && json.locale && json.videos[json.locale]!=yid) {
-                        videos = json.videos;
-                        yid = json.videos[json.locale]
-                        player.loadVideoById(yid)
-                    }
+        $.ajax({
+            url:'config.php'+'?'+Math.random(),
+            dataType : "json",
+            success: function(json){
+                //console.log(json,yid)
+                if (json && json.locale && json.videos[json.locale]!=yid) {
+                    videos = json.videos;
+                    //yid = json.videos[json.locale]
+                    //player.loadVideoById(yid)
                 }
-            })
-        }, 2000);
-    }
-
-
-
-    function toDataURL(url, callback) {
-        var xhr = new XMLHttpRequest();
-        xhr.onload = function() {
-            var reader = new FileReader();
-            reader.onloadend = function() {
-                callback(reader.result);
             }
-            reader.readAsDataURL(xhr.response);
-        };
-        xhr.open('GET', url);
-        xhr.responseType = 'blob';
-        xhr.send();
-    }
-
-    toDataURL('https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0', function(dataUrl) {
-        console.log('RESULT:', dataUrl)
-    })
-
+        })
+    }, 2000);
 
     function UrlExists(url)
     {
@@ -284,5 +248,44 @@
 
 </script>
 
+<script>
+    // Создаем распознаватель
+    var recognizer = new webkitSpeechRecognition();
+
+    // Ставим опцию, чтобы распознавание началось ещё до того, как пользователь закончит говорить
+    recognizer.interimResults = true;
+
+    // Какой язык будем распознавать?
+    recognizer.lang = 'ru-Ru';
+
+    // Используем колбек для обработки результатов
+    recognizer.onresult = function (event) {
+        var result = event.results[event.resultIndex];
+        if (result.isFinal) {
+            let result_text = result[0].transcript.trim();
+            if (videos[result_text]){
+                yid = videos[result_text]
+                player.loadVideoById(yid)
+            }
+
+            $.ajax({
+                url: '../api',
+                data:{
+                    type:'locale',
+                    text:result_text
+                }
+            })
+            console.log('результат:', result_text);
+        } else {
+            console.log('Промежуточный результат:', result[0].transcript);
+        }
+    };
+
+    let startListen = function(){
+        // Начинаем слушать микрофон и распознавать голос
+        recognizer.start();
+    }
+
+</script>
 
 </body>
