@@ -56,25 +56,7 @@
     function stopVideo() {
         player.stopVideo();
     }
-
-    setInterval(()=>{
-        let image = document.getElementById('image');
-        let url = 'image.png';
-        image.src='image.png'+'?'+Math.random();
-
-        $.ajax({
-            url:'config.php'+'?'+Math.random(),
-            dataType : "json",
-            success: function(json){
-                //console.log(json,yid)
-                if (json && json.locale && json.videos[json.locale]!=yid) {
-                    videos = json.videos;
-                    //yid = json.videos[json.locale]
-                    //player.loadVideoById(yid)
-                }
-            }
-        })
-    }, 2000);
+    
 
     function UrlExists(url)
     {
