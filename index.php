@@ -1,4 +1,8 @@
+<head>
+<title></title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
 <style>
     @import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
 
@@ -40,6 +44,8 @@
 
 
 </style>
+</head>
+<body>
 <div class="container"></div>
 <button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()" style="
  
@@ -56,12 +62,80 @@
 
 ">▶️</button>
 
+<button type="button" value="click to toggle fullscreen" onclick="startListen()" style="
+    top: 93px;
+    position: absolute;
+    z-index:1;
+    font-size: 25px;
+
+">▶️</button>
+
 <img src="image.png" id="image" style="width: 100%;top: -7%;display: block;position: relative;">
-<script>
+
+
+ <div id="player" style="display:none"></div>
+ 
+  <script>
+	var videos = [];
+	var yid = 'sGkh1W5cbH4';
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '360',
+          width: '640',
+          videoId: yid,
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+	  
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.ENDED) {
+         player.playVideo();
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+
 setInterval(()=>{
 	let image = document.getElementById('image');
 	let url = 'image.png';
 	image.src='image.png'+'?'+Math.random();
+	
+	$.ajax({
+		url:'config.php'+'?'+Math.random(),
+		dataType : "json",
+		success: function(json){
+			//console.log(json,yid)
+			if (json && json.locale && json.videos[json.locale]!=yid) {
+				videos = json.videos;
+				//yid = json.videos[json.locale]
+				//player.loadVideoById(yid)
+			}
+		}
+	})
 }, 2000);
 
 function UrlExists(url)
@@ -73,6 +147,7 @@ function UrlExists(url)
 }
 
 function toggleFullScreen() {
+	player.playVideo();
   if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
    (!document.mozFullScreen && !document.webkitIsFullScreen)) {
     if (document.documentElement.requestFullScreen) {  
@@ -96,11 +171,12 @@ function toggleFullScreen() {
 
 <script>
 
+
     function startTimer(){
         var width = 400,
             height = 400,
             timePassed = 0,
-            timeLimit = 30;
+            timeLimit = 60;
 
         var fields = [{
             value: timeLimit,
@@ -233,3 +309,37 @@ function toggleFullScreen() {
 
 
 </script>
+
+<script>
+// Создаем распознаватель
+var recognizer = new webkitSpeechRecognition();
+
+// Ставим опцию, чтобы распознавание началось ещё до того, как пользователь закончит говорить
+recognizer.interimResults = true;
+
+// Какой язык будем распознавать?
+recognizer.lang = 'ru-Ru';
+
+// Используем колбек для обработки результатов
+recognizer.onresult = function (event) {
+  var result = event.results[event.resultIndex];
+  if (result.isFinal) {
+	  let result_text = result[0].transcript.trim();
+	  if (videos[result_text]){
+		  yid = videos[result_text]
+		player.loadVideoById(yid)
+	  }
+    console.log('результат:', result_text);
+  } else {
+    console.log('Промежуточный результат:', result[0].transcript);
+  }
+};
+
+let startListen = function(){
+	// Начинаем слушать микрофон и распознавать голос
+recognizer.start();
+}
+
+</script>
+
+</body>
