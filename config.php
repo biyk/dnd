@@ -1,18 +1,10 @@
 <?php
 
+if (file_exists('config.json')){
+	header('Content-Type: application/json; charset=utf-8');
+	$data = file_get_contents('config.json');
+	echo $data;
+	unlink('config.json');
+} else http_response_code(404);
 
-header('Content-Type: application/json; charset=utf-8');
-echo file_get_contents('config.json');
-
-'{
-	"yid": "wSZ0j6eBRpg",
-	"videos":{
-		"relax":"wSZ0j6eBRpg",
-		"релакс":"wSZ0j6eBRpg",
-		"холод":"sGkh1W5cbH4",
-		"winter":"sGkh1W5cbH4",
-		"cicyfight":"LnlddcV5bAY"
-	},
-	"locale":"relax"
-}'
 ?>

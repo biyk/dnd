@@ -12,22 +12,15 @@
     font-size: 25px;
 
 ">▢</button>
-<button type="button" value="click to toggle fullscreen" onclick="startTimer()" style="
-    top: 50px;
-    position: absolute;
-    z-index:1;
-    font-size: 25px;
-
-">▶️</button>
 
 
 <img src="image.png" id="image" style="width: 100%;top: -7%;display: block;position: relative;">
-
+<audio id="audio_player" src style="display:none;"></audio>
 
 <div id="player" style="display:none"></div>
 
 <script>
-    var videos = [];
+    var videos = {};
     var yid = 'sGkh1W5cbH4';
     // 2. This code loads the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
@@ -71,23 +64,48 @@
     }
 
     $(document).ready(function() {
-        setInterval(()=>{
-            let image = document.getElementById('image');
+		
+		let reloadImage = ()=>{
+			let image = document.getElementById('image');
             let url = 'image.png';
-            image.src='image.png'+'?'+Math.random();
+            if (image) image.src='image.png'+'?'+Math.random();
+		}
+		
+
+		reloadImage();
+		let reloadVideo = ()=>{
+			$.ajax({
+                url:'videos.json'+'?'+Math.random(),
+                dataType : "json",
+                success: function(json){
+                    videos = json;
+                }
+				});
+		}
+		
+
+		reloadVideo();		
+		let developMode = ()=>{
+			
+		}
+        setInterval(()=>{
+
 
             $.ajax({
                 url:'config.php'+'?'+Math.random(),
                 dataType : "json",
                 success: function(json){
                     console.log(json,yid)
-                    if (json && json.locale && json.videos[json.locale]!=yid) {
-                        videos = json.videos;
-                        yid = json.videos[json.locale]
+					if (json.command){
+						eval(json.command);
+					}
+                    if (json?.locale && videos[json.locale]!=yid) {
+                        yid = videos[json.locale]
                         player.loadVideoById(yid)
                     }
                 }
-            })
+            });
+
         }, 2000);
     });
 
@@ -146,11 +164,10 @@
 <script>
 
 
-    function startTimer(){
+    function startTimer(timeLimit=60){
         var width = 400,
             height = 400,
-            timePassed = 0,
-            timeLimit = 60;
+            timePassed = 0;
 
         var fields = [{
             value: timeLimit,
@@ -283,6 +300,6 @@
 
 
 </script>
-
+<link rel="stylesheet" type="text/css" href="index.css?v=3.0.95">
 
 </body>

@@ -1,0 +1,7 @@
+{
+    "таймер": "startTimer();",
+    "режим разработчика": "startTimer",
+    "режим игры": "startTimer",
+    "обнови видео": "reloadVideo();",
+    "обнови карту": "reloadImage();"
+}
