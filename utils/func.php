@@ -33,3 +33,60 @@ function safefilerewrite($fileName, $dataToSave)
     fclose($fp);
 }
 }
+
+if (!function_exists('pre'))
+{
+    /**
+     * @param bool|array $array
+     * @param bool $vardump
+     * @param bool $description
+     * @param bool $debug_print_trace
+     *
+     * @return bool
+     */
+    function pre($array = false, $vardump = false, $description = false, $debug_print_trace = false)
+    {
+        $debug_trace = debug_backtrace();
+        if ($debug_print_trace)
+        {
+            $backtrace = "";
+            foreach ($debug_trace as $k => $v)
+            {
+                if ($v['function'] == "include" || $v['function'] == "include_once" || $v['function'] == "require_once"
+                    || $v['function'] == "require"
+                )
+                {
+                    $backtrace
+                        .= "#".$k." ".$v['function']."(".$v['args'][0].") called at [".$v['file'].":".$v['line']."]<br />";
+                }
+                else
+                {
+                    $backtrace .= "#".$k." ".$v['function']."() called at [".$v['file'].":".$v['line']."]<br />";
+                }
+            }
+            echo "<br /><b>".$backtrace."</b><br />";
+        }
+        else
+        {
+            print("<br /><b>".$debug_trace[0]["file"].": ".$debug_trace[0]["line"]."</b><br />");
+        }
+
+        if ($description)
+        {
+            echo "<b>".$description."</b><br />";
+        }
+
+        echo "<pre>";
+        if ($vardump)
+        {
+            var_dump($array);
+        }
+        else
+        {
+            print_r($array);
+        }
+        echo "</pre>";
+
+        return true;
+    }
+}

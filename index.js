@@ -22,8 +22,54 @@ function makeRequest(method, url) {
     });
 }
 
+let reloadImage = ()=>{
+    let image = document.getElementById('image');
+    let url = 'image.png';
+    if (image) image.src='image.png'+'?'+Math.random();
+}
+
+let developMode = ()=>{
+
+}
+let reloadVideo = ()=>{
+    $.ajax({
+        url:'videos.json'+'?'+Math.random(),
+        dataType : "json",
+        success: function(json){
+            videos = json;
+        }
+    });
+}
+
+function toDataURL(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+            callback(reader.result);
+        }
+        reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+}
+
+toDataURL('https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0', function(dataUrl) {
+    console.log('RESULT:', dataUrl)
+})
+
+
+function UrlExists(url)
+{
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status!=404;
+}
 
 function toggleFullScreen() {
+    player.playVideo();
     if ((document.fullScreenElement && document.fullScreenElement !== null) ||
         (!document.mozFullScreen && !document.webkitIsFullScreen)) {
         if (document.documentElement.requestFullScreen) {
@@ -45,11 +91,10 @@ function toggleFullScreen() {
 }
 
 
-function startTimer(){
+function startTimer(timeLimit=60){
     var width = 400,
         height = 400,
-        timePassed = 0,
-        timeLimit = 30;
+        timePassed = 0;
 
     var fields = [{
         value: timeLimit,
@@ -179,3 +224,43 @@ function startTimer(){
         };
     }
 }
+
+function checkConfig() {
+    $.ajax({
+        url: 'config.php' + '?' + Math.random(),
+        dataType: "json",
+        success: function (json) {
+            console.log(json, yid)
+            if (json.command) {
+                eval(json.command);
+            }
+            if (json?.locale && videos[json.locale] != yid) {
+                yid = videos[json.locale];
+                player.loadVideoById(yid);
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.error("Error loading config.php:", textStatus, errorThrown);
+        }
+    });
+}
+
+function loadDemo(src=null){
+    if (src){
+        $('#demo').css('opacity',1).attr('src',src).stop().animate({
+            opacity:0
+        }, 15*60*1000);
+    }
+}
+
+
+$(document).ready(function() {
+
+    reloadImage();
+    reloadVideo();
+
+    setInterval(checkConfig, 2000);
+});
+
+
+
