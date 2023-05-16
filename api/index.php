@@ -17,7 +17,7 @@ $json_v = json_decode(file_get_contents($path), 1);
 
 $json_command = json_decode(file_get_contents('../commands.json'), 1);
 $image_command = json_decode(file_get_contents('../images.json'), 1);
-
+$json_map = json_decode(file_get_contents('../map.json'), 1);
 if ($type=='locale'){
      // Loop through each phrase and command in the commands.json file
    	foreach ($json_command as $phrase=>$command){
@@ -41,6 +41,11 @@ if ($type=='locale'){
 				$config['locale'] = $name;
         }
     }
+}
+
+if ($type=='map'){
+	$json_map[$_REQUEST['chunk']] = $_REQUEST['checked'];
+	file_put_contents('../map.json', json_encode($json_map));
 }
  // Get the file creation time of the image.png file
 $filetime = filectime('../image.png');//windows

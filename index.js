@@ -244,6 +244,25 @@ function checkConfig() {
         }
     });
 }
+function checkMap() {
+    $.ajax({
+        url: '../map.json' + '?' + Math.random(),
+        dataType: "json",
+        success: function (json) {
+            console.log(json);
+			$.each(json, function(chunk,e){
+				if (e=='true'){
+					$('#'+chunk).css('opacity',1);
+				} else {
+					$('#'+chunk).css('opacity',0);
+				}
+			})
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.error("Error loading map.json:", textStatus, errorThrown);
+        }
+    });
+}
 
 function loadDemo(src=null){
     if (src){
@@ -254,12 +273,17 @@ function loadDemo(src=null){
 }
 
 
+function showMapChunk(chunk = null){
+	$('#'+chunk).css('opacity',1);
+}
+
 $(document).ready(function() {
 
     reloadImage();
     reloadVideo();
 
     setInterval(checkConfig, 2000);
+    setInterval(checkMap, 2000);
 });
 
 

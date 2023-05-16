@@ -127,7 +127,25 @@ $(function() {
     }
 
 
-
+	$('.js_map_chunk').on('click', function(){
+		let $this = $(this);
+		let chunk = $this.val();
+		let checked = $this.is(':checked');
+		
+		if(checked) {
+			$('#'+chunk).css('opacity',1);
+		} else {
+			$('#'+chunk).css('opacity',0.3);	
+		}
+		$.ajax({
+			url:'../api',
+			data:{
+				type:'map',
+				chunk,
+				checked
+			}
+		});
+	});
 
 
 });

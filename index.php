@@ -17,14 +17,17 @@
     <?php
     $files = glob("img/*.*");
     foreach ($files as $num=>$filename) {
-
+		$temp = explode('/',$filename);
+		$id = md5(end($temp));
         ?>
         <img style="
             width: 100%;
             position:absolute;
-            z-index: <?=count($files)-$num;
-        ?>
-                " src="<?=$filename?>" class="d-block w-100 in_block" alt="...">
+			transition: opacity 10s, visibility 0.3s;
+			opacity:0;
+            z-index: <?=count($files)-$num;?>" 
+			id="<?=$id?>"
+			src="<?=$filename?>" class="d-block w-100 in_block" alt="...">
 
         <?php
     }
