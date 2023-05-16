@@ -27,7 +27,7 @@
 
 <body class="bg-theme bg-theme2">
 <!--wrapper-->
-<div class="wrapper">
+<div class="wrapper toggled">
     <!--sidebar wrapper -->
     <div class="sidebar-wrapper" data-simplebar="true">
         <div class="sidebar-header">
@@ -708,6 +708,7 @@
         </div>
     </header>
     <!--end header -->
+    <?php  $files = glob("../img/*.*");?>
     <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content">
@@ -731,10 +732,19 @@
                 </div>
             </div>
             <!--end row-->
-
+            <div class="row" style=" position: relative; left: 11%;">
+                <?php
+                foreach ($files as $num=>$filename) { ?>
+                    <div class="input-group input-group-sm mb-3" style="width: 20%">
+                        <div class="input-group-text">
+                            <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        </div>
+                        <input type="text" class="form-control" aria-label="Text input with checkbox" value="<?php $arr = explode('_',$filename); echo end($arr)?>">
+                    </div>
+                <?php } ?>
+            </div>
             <div class="col" style="position: relative;left: 15%;">
                 <?php
-                $files = glob("../img/*.*");
                 foreach ($files as $num=>$filename) {
                     ?>
                     <img style="position:absolute;z-index: <?=100+count($files)-$num?>" src="<?=$filename?>" class="d-block w-80 in_block" alt="...">
@@ -742,23 +752,7 @@
                 }
                 ?>
             </div>
-            <div class="col" >
-                <div class="card">
-                    <div class="card-body">
-                        <?php
-                        foreach ($files as $num=>$filename) { ?>
-                        <div class="input-group input-group-sm mb-3">
-                            <div class="input-group-text">
-                                <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
-                            </div>
-                            <input type="text" class="form-control" aria-label="Text input with checkbox" value="<?php $arr = explode('_',$filename); echo end($arr)?>">
-                        </div>
-                        <?php } ?>
-                    </div>
-                </div>
 
-
-            </div>
         </div>
     </div>
     <!--end page wrapper -->
@@ -767,9 +761,6 @@
     <!--end overlay-->
     <!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
     <!--End Back To Top Button-->
-    <footer class="page-footer">
-        <p class="mb-0"></p>
-    </footer>
 </div>
 <!--end wrapper-->
 <!--start switcher-->
