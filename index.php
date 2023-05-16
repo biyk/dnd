@@ -3,22 +3,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
-<body>
+<body style="margin: 0px">
 <div class="container"></div>
 <button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()" style="
 
     position: absolute;
-    z-index:1;
+    z-index:100;
     font-size: 25px;
 
 ">▢</button>
 
+<div class="map-wrapper" style="position: relative">
+    <?php
+    $files = glob("img/*.*");
+    foreach ($files as $num=>$filename) {
+
+        ?>
+        <img style="
+            width: 100%;
+            position:absolute;
+            z-index: <?=count($files)-$num;
+        ?>
+                " src="<?=$filename?>" class="d-block w-100 in_block" alt="...">
+
+        <?php
+    }
+    ?>
+</div>
 
 <img src="image.png" id="image" style="width: 100%;top: -7%;display: block;position: relative;">
-<img src="image.png" id="demo" style="width: 30%;right: 0%;display: block;position: absolute;top: 0px;border: 3px solid red;">
+<img src="image.png" id="demo" style="z-index:100;width: 30%;right: 0%;display: block;position: absolute;top: 0px;border: 3px solid red;">
 <audio id="audio_player" src style="display:none;"></audio>
 
 <div id="player" style="display:none"></div>
+<iframe id="helper" style="display:none"></iframe>
 
 <script>
     var videos = {};

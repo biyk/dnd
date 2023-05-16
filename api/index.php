@@ -1,8 +1,13 @@
 <?php
+
+/**
+ * Обработка поступающих голосовых команд и выдача команд для
+ */
+
+include '../utils/func.php';
 date_default_timezone_set('Europe/Ulyanovsk');
 $type = $_REQUEST['type'];
 $locales = explode(' ', $_REQUEST['text']);
-$path_c = '../config.json';
  // Initialize the config array
 $config = [];
 
@@ -18,17 +23,12 @@ if ($type=='locale'){
    	foreach ($json_command as $phrase=>$command){
        // If the phrase is found in the locales parameter
        if (strpos($_REQUEST['text'],$phrase)!==false) {
-		   // Set the command in the config array
-		   $config['command'] = $command;
- 		   // If the phrase is "таймер" and the second locale is an integer, replace the "()"
-		   if ($phrase=='таймер' && intval($locales[1]))
-			   $config['command'] = str_replace('()',"($locales[1])",$command);
-	   }
+           $config['command'] = selectCommand(compact(['phrase', 'command', 'locales']));
+       }
     }
-   	// Loop through each phrase and command in the commands.json file
+
    	foreach ($image_command as $phrase=>$image){
-       // If the phrase is found in the locales parameter
-       if (strpos($_REQUEST['text'],$phrase)!==false) {
+   	    if (strpos($_REQUEST['text'],$phrase)!==false) {
 		   $config['command'] = "loadDemo('".$image."');";
 	   }
     }
@@ -53,6 +53,5 @@ if ($filetime!=$testtime)  {
 	file_put_contents('../status.ini', $filetime);
 }
  // If the config array is not empty, write it to the config.json file
-if ($config) file_put_contents($path_c, json_encode($config));
- // Print "ok" to indicate that the script executed successfully
+if ($config) file_put_contents('../config.json', json_encode($config));
 echo 'ok';

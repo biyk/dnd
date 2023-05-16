@@ -263,4 +263,11 @@ $(document).ready(function() {
 });
 
 
-
+/**
+ * Показывает страницу с подсказкой
+ */
+function shoPage(page=null){
+    if (page){
+        $('#helper').attr('src',page).show();
+    }
+}

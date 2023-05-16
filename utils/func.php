@@ -90,3 +90,28 @@ if (!function_exists('pre'))
         return true;
     }
 }
+
+
+
+
+/**
+ * API
+ */
+
+function selectCommand($data){
+    $command = $phrase = $locales = null;
+    extract($data);
+    $result = $command;
+
+    // If the phrase is "таймер" and the second locale is an integer, replace the "()"
+    if ($phrase=='таймер' && intval($locales[1])){
+        $result = str_replace('()',"($locales[1])",$command);
+    }
+
+    if ($phrase=='Подсказка' && intval($locales[1])){
+        //TODO
+        //$result = str_replace('()',"($locales[1])",$command);
+    }
+
+    return $result;
+}
