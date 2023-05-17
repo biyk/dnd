@@ -147,6 +147,43 @@ $(function() {
 		});
 	});
 
+	$('.js_save_videos').on('click', function () {
+		let videos = {};
+		$('.js_video').each(function () {
+			let $this = $(this);
+			let key = $this.find('[name="key"]').val();
+			let video = $this.find('[name="video"]').val();
+
+			if (video){
+				videos[video] = key;
+				$this.removeClass('empty');
+			}
+		});
+
+		if ($('.js_video.empty').length==0){
+			$('.js_video:last').after($('#new_video').html())
+		}
+
+		$.ajax({
+			url:'../api',
+			data:{
+				type:'videos',
+				videos
+			}
+		})
+	});
+
+	$('[name="selectVideo"]').on('click', function () {
+		let $radio = $('[name="selectVideo"]:checked');
+		let key = $radio.siblings('[name="key"]').val();
+		$.ajax({
+			url: '../api',
+			data:{
+				type:'locale',
+				text:key,
+			}
+		})
+	})
 
 });
 

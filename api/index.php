@@ -7,7 +7,7 @@
 include '../utils/func.php';
 date_default_timezone_set('Europe/Ulyanovsk');
 $type = $_REQUEST['type'];
-$locales = explode(' ', $_REQUEST['text']);
+$locales = empty($_REQUEST['text'])?[]:explode(' ', $_REQUEST['text']);
  // Initialize the config array
 $config = [];
 
@@ -35,10 +35,10 @@ if ($type=='locale'){
 	// для каждого слова из команды
 	foreach ($locales as $locale) {
  		// Loop through each video name and URL in the json_v array
-		foreach ($json_v as $name=>$video){
+		foreach ($json_v as $video=>$name){
             // If the locale is found in the video name, set the locale in the config array
             if (in_array($locale, explode(' ',$name)))
-				$config['locale'] = $name;
+				$config['locale'] = $video;
         }
     }
 }
@@ -47,16 +47,17 @@ if ($type=='map'){
 	$json_map[$_REQUEST['chunk']] = $_REQUEST['checked'];
 	file_put_contents('../map.json', json_encode($json_map));
 }
- // Get the file creation time of the image.png file
-$filetime = filectime('../image.png');//windows
- // Get the contents of the status.ini file
-$testtime = file_get_contents('../status.ini');
- // If the file creation time is different from the contents of the status.ini file
-if ($filetime!=$testtime)  {
-	$config['command'] = 'reloadImage';
- 	// Write the file creation time to the status.ini file
-	file_put_contents('../status.ini', $filetime);
+
+
+if ($type=='videos'){
+    $new_videos = $_REQUEST['videos'];
+    var_dump($new_videos);
+    foreach ($new_videos as $video=>$key){
+        $json_v[$video] = $key;
+    }
+    file_put_contents('../videos.json', json_encode($json_v));
 }
+
  // If the config array is not empty, write it to the config.json file
 if ($config) file_put_contents('../config.json', json_encode($config));
 echo 'ok';

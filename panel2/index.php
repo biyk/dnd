@@ -407,40 +407,182 @@
                 </div>
             </div>
             <!--end row-->
-            <div class="row" style=" position: relative;width: 100%">
-                <?php
-				$map = json_decode(file_get_contents('../map.json'),1);
-                foreach ($files as $num=>$filename) { 
-					$temp = explode('/',$filename);
-					$id = md5(end($temp));
-					$checked = empty($map[$id])?'false':$map[$id];
-				?>
-                    <div class="input-group input-group-sm mb-3" style="width: 20%">
-                        <div class="input-group-text">
-                            <input <?php if($checked=='true'){?> checked<?php }?> class="form-check-input js_map_chunk" type="checkbox" value="<?=$id?>" aria-label="Checkbox for following text input">
+            <div class="card-body">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#primaryhome" role="tab" aria-selected="false">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon"><i class="bx bx-home font-18 me-1"></i>
+                                </div>
+                                <div class="tab-title">Карта</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" data-bs-toggle="tab" href="#primaryprofile" role="tab" aria-selected="false">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon"><i class="bx bx-user-pin font-18 me-1"></i>
+                                </div>
+                                <div class="tab-title">Амбиенс</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link " data-bs-toggle="tab" href="#primarycontact" role="tab" aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon"><i class="bx bx-microphone font-18 me-1"></i>
+                                </div>
+                                <div class="tab-title">Картинки</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content py-3">
+                    <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
+                        <div class="row" style=" position: relative;width: 100%">
+                            <?php
+                            $map = json_decode(file_get_contents('../map.json'),1);
+                            foreach ($files as $num=>$filename) {
+                                $temp = explode('/',$filename);
+                                $id = md5(end($temp));
+                                $checked = empty($map[$id])?'false':$map[$id];
+                                ?>
+                                <div class="input-group input-group-sm mb-3" style="width: 20%">
+                                    <div class="input-group-text">
+                                        <input <?php if($checked=='true'){?> checked<?php }?> class="form-check-input js_map_chunk" type="checkbox" value="<?=$id?>" aria-label="Checkbox for following text input">
+                                    </div>
+                                    <input type="text" class="form-control" aria-label="Text input with checkbox" value="<?php $arr = explode('_',$filename); echo end($arr)?>">
+                                </div>
+                            <?php } ?>
                         </div>
-                        <input type="text" class="form-control" aria-label="Text input with checkbox" value="<?php $arr = explode('_',$filename); echo end($arr)?>">
+                        <div class="col" style="position: relative;">
+                            <?php
+                            foreach ($files as $num=>$filename) {
+                                $temp = explode('/',$filename);
+                                $id = md5(end($temp));
+                                $checked = empty($map[$id])?'false':$map[$id];
+                                ?>
+                                <img id="<?=$id?>"
+                                     style="
+                                             width: 100%;
+                                             position:absolute;
+                                             z-index: <?=100+count($files)-$num?>;
+                                             opacity: <?=($checked=='true')?'1':'0.3'?>;
+                                             " src="<?=$filename?>" class="d-block w-80 in_block" alt="...">
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </div>
-                <?php } ?>
+                    <div class="tab-pane fade" id="primaryprofile" role="tabpanel">
+                        <div class="card-body">
+                            <?php
+                            $videos = json_decode(file_get_contents('../videos.json'));
+                            foreach ($videos as $video=>$key){?>
+                            <div class="form-check js_video">
+                                <input class="form-check-input" type="radio" name="selectVideo" >
+                                <input class="form-control" name="key" value="<?=$key?>" style="width: 88%; display: inline-block">
+                                <input class="form-control" name="video" value="<?=$video?>" style="width: 10%; display: inline-block">
+                            </div>
+                            <?php }?>
+                            <div class="form-check js_video empty">
+                                <input class="form-check-input" type="radio" name="selectVideo">
+                                <input class="form-control" name="key" value="" style="width: 88%; display: inline-block">
+                                <input class="form-control"  name="video" value="" style="width: 10%; display: inline-block">
+                            </div>
+                            <template id="new_video">
+                                <div class="form-check js_video empty">
+                                    <input class="form-check-input" type="radio" name="selectVideo">
+                                    <input class="form-control" name="key" value="" style="width: 88%; display: inline-block">
+                                    <input class="form-control"  name="video" value="" style="width: 10%; display: inline-block">
+                                </div>
+                            </template>
+                            <div class="col">
+                                <button type="button" class="btn btn-light js_save_videos">
+                                    Save
+                                </button>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade " id="primarycontact" role="tabpanel">
+                        <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2">
+                            <div class="col">
+                                <h6 class="mb-0 text-uppercase">With controls</h6>
+                                <hr/>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">	<span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h6 class="mb-0 text-uppercase">With captions</h6>
+                                <hr/>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+                                                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+                                                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h5>First slide label</h5>
+                                                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h5>Second slide label</h5>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item">
+                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
+                                                    <div class="carousel-caption d-none d-md-block">
+                                                        <h5>Third slide label</h5>
+                                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">	<span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="visually-hidden">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col" style="position: relative;">
-                <?php
-                foreach ($files as $num=>$filename) {
-					$temp = explode('/',$filename);
-					$id = md5(end($temp));
-					$checked = empty($map[$id])?'false':$map[$id];
-                    ?>
-                    <img id="<?=$id?>" 
-						style="
-							width: 100%;
-							position:absolute;
-							z-index: <?=100+count($files)-$num?>;
-							opacity: <?=($checked=='true')?'1':'0.3'?>;
-						" src="<?=$filename?>" class="d-block w-80 in_block" alt="...">
-                    <?php
-                }
-                ?>
-            </div>
+
 
         </div>
     </div>

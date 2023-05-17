@@ -234,8 +234,8 @@ function checkConfig() {
             if (json.command) {
                 eval(json.command);
             }
-            if (json?.locale && videos[json.locale] != yid) {
-                yid = videos[json.locale];
+            if (json?.locale && json.locale != yid) {
+                yid = json.locale;
                 player.loadVideoById(yid);
             }
         },
@@ -246,7 +246,7 @@ function checkConfig() {
 }
 function checkMap() {
     $.ajax({
-        url: '../map.json' + '?' + Math.random(),
+        url: 'map.json' + '?' + Math.random(),
         dataType: "json",
         success: function (json) {
             console.log(json);

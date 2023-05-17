@@ -35,7 +35,7 @@
 </div>
 
 <img src="image.png" id="image" style="width: 100%;top: -7%;display: block;position: relative;">
-<img src="image.png" id="demo" style="z-index:100;width: 30%;right: 0%;display: block;position: absolute;top: 0px;border: 3px solid red;">
+<img src="image.png" id="demo" style="opacity:0;z-index:100;width: 30%;right: 0%;display: block;position: absolute;top: 0px;border: 3px solid red;">
 <audio id="audio_player" src style="display:none;"></audio>
 
 <div id="player" style="display:none"></div>
@@ -64,6 +64,8 @@
                 'onStateChange': onPlayerStateChange
             }
         });
+
+        window.YTLoaded = true;
     }
 
     // 4. The API will call this function when the video player is ready.
