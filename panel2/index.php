@@ -383,7 +383,7 @@
         </div>
     </header>
     <!--end header -->
-    <?php  $files = glob("../img/*.*");?>
+    
     <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content">
@@ -441,7 +441,7 @@
                     <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
 								
                         <div class="row" style=" position: absolute;width: 90%">
-
+							<?php  $files = glob("../img/*.*");?>
                             <?php
                             $map = json_decode(file_get_contents('../map.json'),1);
                             foreach ($files as $num=>$filename) {
@@ -515,17 +515,16 @@
                                 <hr/>
                                 <div class="card">
                                     <div class="card-body">
-                                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
                                             <div class="carousel-inner">
-                                                <div class="carousel-item active">
-                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
+											<?php  $files = glob("../demo/*.*");
+											$active = 1;
+											foreach ($files as $num=>$filename) {
+											?>
+                                                <div class="carousel-item <?php if($active){$active=0;?>active<?php }?>">
+                                                    <img src="<?=$filename?>" class="d-block w-100" alt="...">
                                                 </div>
-                                                <div class="carousel-item">
-                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
-                                                </div>
+											<?php }?>
                                             </div>
                                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Previous</span>
@@ -542,34 +541,27 @@
                                 <hr/>
                                 <div class="card">
                                     <div class="card-body">
-                                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                                        <div id="carouselExampleCaptions" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
                                             <ol class="carousel-indicators">
                                                 <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
                                                 <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
                                                 <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
                                             </ol>
                                             <div class="carousel-inner">
-                                                <div class="carousel-item active">
-                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
+												<?php 
+												$images = json_decode(file_get_contents('../images.json'),1);
+												$active = 1;
+												foreach ($images as $name=>$image) {
+												?>
+                                                <div class="carousel-item <?php if($active){$active=0;?>active<?php }?>">
+                                                    <img src="<?=$image?>" class="d-block w-100" alt="...">
                                                     <div class="carousel-caption d-none d-md-block">
-                                                        <h5>First slide label</h5>
-                                                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                                        <h5> </h5>
+                                                        <p><?=$name?></p>
                                                     </div>
                                                 </div>
-                                                <div class="carousel-item">
-                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h5>Second slide label</h5>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="https://via.placeholder.com/1920x1080" class="d-block w-100" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h5>Third slide label</h5>
-                                                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                                    </div>
-                                                </div>
+												<?php }?>
+                                             
                                             </div>
                                             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Previous</span>
