@@ -2,9 +2,10 @@
     <title></title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="//console.re/connector.js" data-channel="try-00cd-61d3-d316" id="consolerescript"></script>
 </head>
 <body style="margin: 0px">
-<div class="container"></div>
+<div class="container" style="z-index:100;"></div>
 <button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()" style="
 
     position: absolute;
@@ -91,7 +92,7 @@
 
 
 </script>
-<script src="index.js"></script>
+<script src="index.js?<?=time()?>"></script>
 <link rel="stylesheet" type="text/css" href="index.css?v=3.0.95">
 
 </body>

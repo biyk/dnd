@@ -439,7 +439,9 @@
                 </ul>
                 <div class="tab-content py-3">
                     <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
-                        <div class="row" style=" position: relative;width: 100%">
+								
+                        <div class="row" style=" position: absolute;width: 90%">
+
                             <?php
                             $map = json_decode(file_get_contents('../map.json'),1);
                             foreach ($files as $num=>$filename) {
@@ -447,15 +449,16 @@
                                 $id = md5(end($temp));
                                 $checked = empty($map[$id])?'false':$map[$id];
                                 ?>
-                                <div class="input-group input-group-sm mb-3" style="width: 20%">
+                                <div class="input-group input-group-sm mb-3" style="width: 20%;z-index:100">
                                     <div class="input-group-text">
                                         <input <?php if($checked=='true'){?> checked<?php }?> class="form-check-input js_map_chunk" type="checkbox" value="<?=$id?>" aria-label="Checkbox for following text input">
                                     </div>
                                     <input type="text" class="form-control" aria-label="Text input with checkbox" value="<?php $arr = explode('_',$filename); echo end($arr)?>">
                                 </div>
                             <?php } ?>
+							
                         </div>
-                        <div class="col" style="position: relative;">
+                       		 <div class="" style="position: relative;">
                             <?php
                             foreach ($files as $num=>$filename) {
                                 $temp = explode('/',$filename);
@@ -466,13 +469,13 @@
                                      style="
                                              width: 100%;
                                              position:absolute;
-                                             z-index: <?=100+count($files)-$num?>;
+                                             z-index: <?=count($files)-$num?>;
                                              opacity: <?=($checked=='true')?'1':'0.3'?>;
                                              " src="<?=$filename?>" class="d-block w-80 in_block" alt="...">
                                 <?php
                             }
                             ?>
-                        </div>
+							</div>	
                     </div>
                     <div class="tab-pane fade" id="primaryprofile" role="tabpanel">
                         <div class="card-body">

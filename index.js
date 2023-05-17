@@ -230,11 +230,11 @@ function checkConfig() {
         url: 'config.php' + '?' + Math.random(),
         dataType: "json",
         success: function (json) {
-            console.log(json, yid)
+            console.re.log(json, yid)
             if (json.command) {
                 eval(json.command);
             }
-            if (json?.locale && json.locale != yid) {
+            if (json.locale && json.locale != yid) {
                 yid = json.locale;
                 player.loadVideoById(yid);
             }
