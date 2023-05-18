@@ -436,6 +436,15 @@
                             </div>
                         </a>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link " data-bs-toggle="tab" href="#primaryinit" role="tab" aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon"><i class="bx bx-microphone font-18 me-1"></i>
+                                </div>
+                                <div class="tab-title">Инициатива</div>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
                 <div class="tab-content py-3">
                     <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
@@ -575,6 +584,16 @@
                             </div>
                         </div>
                     </div>
+					<div class="tab-pane fade " id="primaryinit" role="tabpanel">
+					<div class="card">
+							<div class="card-body">
+								<div class="input-group"> <span class="input-group-text">First and last name</span>
+									<input type="text" aria-label="First" class="form-control" style="max-width: 61px;">
+									<input type="text" aria-label="Last" class="form-control">
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
             </div>
 
