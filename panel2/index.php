@@ -585,14 +585,55 @@
                         </div>
                     </div>
 					<div class="tab-pane fade " id="primaryinit" role="tabpanel">
-					<div class="card">
-							<div class="card-body">
-								<div class="input-group"> <span class="input-group-text">First and last name</span>
-									<input type="text" aria-label="First" class="form-control" style="max-width: 61px;">
-									<input type="text" aria-label="Last" class="form-control">
-								</div>
-							</div>
-						</div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="input-group">
+                                    <span class="input-group-text">Pl</span>
+                                    <input type="text" value="Init" aria-label="First" class="form-control" style="max-width: 61px;" disabled readonly>
+                                    <input type="text" value="Имя" aria-label="Last" class="form-control" disabled readonly>
+                                </div>
+                                <?php $players=json_decode(file_get_contents('../init.json'),1);
+                                foreach ($players['all'] as $player){?>
+                                <div class="input-group">
+
+                                    <div class="input-group-text">
+                                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                    </div>
+                                    <input type="text" aria-label="First" class="form-control" style="max-width: 61px;">
+                                    <input type="text" aria-label="Last" class="form-control" value="<?=$player['name']?>">
+                                    <button type="button" class="btn btn-light">ICON</button>
+                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" style="margin: 0px;">
+                                        <li><a class="dropdown-item" href="#">Action</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Another action</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Something else here</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <?php } ?>
+                                <hr>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-light">
+                                        <i class="bx bx-rotate-right me-0"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-light" title="раунд">0</i>
+                                    </button>
+                                    <button type="button" class="btn btn-light" style="transform: rotate(180deg);"><i class="bx bx-up-arrow"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-light"><i class="bx bx-right-arrow"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 					</div>
                 </div>
             </div>

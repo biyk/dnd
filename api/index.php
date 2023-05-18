@@ -45,7 +45,7 @@ if ($type=='locale'){
 
 if ($type=='map'){
 	$json_map[$_REQUEST['chunk']] = $_REQUEST['checked'];
-	file_put_contents('../map.json', json_encode($json_map));
+	file_put_contents('../map.json', json_encode($json_map,JSON_PRETTY_PRINT));
 }
 
 
@@ -55,7 +55,7 @@ if ($type=='videos'){
     foreach ($new_videos as $video=>$key){
         $json_v[$video] = $key;
     }
-    file_put_contents('../videos.json', json_encode($json_v));
+    file_put_contents('../videos.json', json_encode($json_v,JSON_PRETTY_PRINT));
 }
 
  // If the config array is not empty, write it to the config.json file

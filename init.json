@@ -1,0 +1,10 @@
+{
+  "round": 0,
+  "try": "Гатц",
+  "all": [
+    {"init": 23,"name": "Гатц","player": true},
+    {"init": 2,"name": "Эльза","player": true},
+    {"init": 6,"name": "Эмбер","player": true},
+    {"init": 5,"name": "Сок","player": true}
+  ]
+}
