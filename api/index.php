@@ -53,10 +53,19 @@ if ($type=='videos'){
     $new_videos = $_REQUEST['videos'];
     var_dump($new_videos);
     foreach ($new_videos as $video=>$key){
-        $json_v[$video] = $key;
+        if ($key) $json_v[$video] = $key;
+        else unset($json_v[$video]);
     }
     file_put_contents('../videos.json', json_encode($json_v,JSON_PRETTY_PRINT));
 }
+
+
+if ($type=='init'){
+    $init = $_REQUEST['init'];
+    var_dump($init);
+    saveJson('../init.json', $init);
+}
+
 
  // If the config array is not empty, write it to the config.json file
 if ($config) file_put_contents('../config.json', json_encode($config));

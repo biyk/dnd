@@ -92,6 +92,30 @@ if (!function_exists('pre'))
 }
 
 
+function orderTry(&$init){
+    usort($init['all'], function($a, $b) {
+        return $b['init'] - $a['init'];
+    });
+}
+
+function getCurrentPlayer($init){
+    $try = $init['try'];
+    foreach ($init['all'] as $player){
+        if ($player['init']==$try) return $player['name'];
+    }
+    return '???';
+}
+
+function getNextPlayer($init){
+    orderTry($init);
+    if (!$init['try']) return '--';
+    $try = $init['try']-1;
+    foreach ($init['all'] as $player){
+        if ($player['init']<=$try) return $player['name'];
+    }
+    return '???';
+}
+
 
 
 /**
@@ -114,4 +138,8 @@ function selectCommand($data){
     }
 
     return $result;
+}
+
+function saveJson($file, $array){
+    return file_put_contents($file, json_encode($array,JSON_PRETTY_PRINT + JSON_UNESCAPED_UNICODE));
 }

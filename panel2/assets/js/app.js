@@ -1,6 +1,6 @@
 $(function() {
 	"use strict";
-	new PerfectScrollbar(".header-message-list"), new PerfectScrollbar(".header-notifications-list"), $(".mobile-search-icon").on("click", function() {
+	$(".mobile-search-icon").on("click", function() {
 		$(".search-bar").addClass("full-search-bar")
 	}), $(".search-close").on("click", function() {
 		$(".search-bar").removeClass("full-search-bar")
@@ -185,6 +185,50 @@ $(function() {
 		})
 	})
 
+	$('#init_reset').on('click', function () {
+		init = init || [];
+		init.round = 0;
+		init.try = null;
+		init.all.map(item=>item.init=0);
+		$.ajax({
+			url:'../api',
+			data:{
+				type:'init',
+				init
+			}
+		});
+		$('.js-row-init').val('');
+		$('.js-row-surprise').val('');
+	});
+
+	$('#new_line').on('click', function () {
+		let template = $('.js-init-row:last')[0].outerHTML;
+		let $template = $(template)
+		$template.find('.js-row-player').attr('checked',false);
+		$template.find('.js-row-init').val('');
+		$template.find('.js-row-name').val('');
+		$('.js-init-row:last').after($template);
+	});
+
+	$('#save_config').on('click', function () {
+		init = init || [];
+		$('.js-init-row:last').each(function () {
+			let $this = $(this);
+			init.all.push({
+				init: $this.find('.js-row-init').val(),
+				name: $this.find('.js-row-name').val(),
+				player: $this.find('.js-row-player').is(':checked')
+			})
+		});
+
+		$.ajax({
+			url:'../api',
+			data:{
+				type:'init',
+				init
+			}
+		});
+	})
 });
 
 // Создаем распознаватель

@@ -1,3 +1,4 @@
+<?php include '../utils/func.php'?>
 <!doctype html>
 <html lang="en">
 
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="assets/css/semi-dark.css" />
     <link rel="stylesheet" href="assets/css/header-colors.css" />
     <title>Dashtrans - Bootstrap5 Admin Template</title>
+    <script>var init = <?=file_get_contents('../init.json')?></script>
 </head>
 
 <body class="bg-theme bg-theme2">
@@ -30,360 +32,10 @@
 <div class="wrapper toggled">
     <!--start header -->
     <header>
-        <div class="topbar d-flex align-items-center">
-            <nav class="navbar navbar-expand">
-                <div class="mobile-toggle-menu"><i class='bx bx-menu'></i>
-                </div>
-                <div class="search-bar flex-grow-1">
-                    <div class="position-relative search-bar-box">
-                        <input type="text" class="form-control search-control" placeholder="Type to search..."> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
-                        <span class="position-absolute top-50 search-close translate-middle-y"><i class='bx bx-x'></i></span>
-                    </div>
-                </div>
-                <div class="top-menu ms-auto">
-                    <ul class="navbar-nav align-items-center">
-                        <li class="nav-item mobile-search-icon">
-                            <a class="nav-link" href="#">	<i class='bx bx-search'></i>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown dropdown-large">
-                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">	<i class='bx bx-category'></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <div class="row row-cols-3 g-3 p-3">
-                                    <div class="col text-center">
-                                        <div class="app-box mx-auto bg-gradient-cosmic text-white"><i class='bx bx-group'></i>
-                                        </div>
-                                        <div class="app-title">Teams</div>
-                                    </div>
-                                    <div class="col text-center">
-                                        <div class="app-box mx-auto bg-gradient-burning text-white"><i class='bx bx-atom'></i>
-                                        </div>
-                                        <div class="app-title">Projects</div>
-                                    </div>
-                                    <div class="col text-center">
-                                        <div class="app-box mx-auto bg-gradient-lush text-white"><i class='bx bx-shield'></i>
-                                        </div>
-                                        <div class="app-title">Tasks</div>
-                                    </div>
-                                    <div class="col text-center">
-                                        <div class="app-box mx-auto bg-gradient-kyoto text-dark"><i class='bx bx-notification'></i>
-                                        </div>
-                                        <div class="app-title">Feeds</div>
-                                    </div>
-                                    <div class="col text-center">
-                                        <div class="app-box mx-auto bg-gradient-blues text-dark"><i class='bx bx-file'></i>
-                                        </div>
-                                        <div class="app-title">Files</div>
-                                    </div>
-                                    <div class="col text-center">
-                                        <div class="app-box mx-auto bg-gradient-moonlit text-white"><i class='bx bx-filter-alt'></i>
-                                        </div>
-                                        <div class="app-title">Alerts</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown dropdown-large">
-                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">7</span>
-                                <i class='bx bx-bell'></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:;">
-                                    <div class="msg-header">
-                                        <p class="msg-header-title">Notifications</p>
-                                        <p class="msg-header-clear ms-auto">Marks all as read</p>
-                                    </div>
-                                </a>
-                                <div class="header-notifications-list">
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">New Customers<span class="msg-time float-end">14 Sec
-												ago</span></h6>
-                                                <p class="msg-info">5 new user registered</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notify bg-light-danger text-danger"><i class="bx bx-cart-alt"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">New Orders <span class="msg-time float-end">2 min
-												ago</span></h6>
-                                                <p class="msg-info">You have recived new orders</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notify bg-light-success text-success"><i class="bx bx-file"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">24 PDF File<span class="msg-time float-end">19 min
-												ago</span></h6>
-                                                <p class="msg-info">The pdf files generated</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notify bg-light-warning text-warning"><i class="bx bx-send"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Time Response <span class="msg-time float-end">28 min
-												ago</span></h6>
-                                                <p class="msg-info">5.1 min avarage time response</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notify bg-light-info text-info"><i class="bx bx-home-circle"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">New Product Approved <span
-                                                            class="msg-time float-end">2 hrs ago</span></h6>
-                                                <p class="msg-info">Your new product has approved</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notify bg-light-danger text-danger"><i class="bx bx-message-detail"></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">New Comments <span class="msg-time float-end">4 hrs
-												ago</span></h6>
-                                                <p class="msg-info">New customer comments recived</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notify bg-light-success text-success"><i class='bx bx-check-square'></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Your item is shipped <span class="msg-time float-end">5 hrs
-												ago</span></h6>
-                                                <p class="msg-info">Successfully shipped your item</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notify bg-light-primary text-primary"><i class='bx bx-user-pin'></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">New 24 authors<span class="msg-time float-end">1 day
-												ago</span></h6>
-                                                <p class="msg-info">24 new authors joined last week</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="notify bg-light-warning text-warning"><i class='bx bx-door-open'></i>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Defense Alerts <span class="msg-time float-end">2 weeks
-												ago</span></h6>
-                                                <p class="msg-info">45% less alerts last 4 weeks</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <a href="javascript:;">
-                                    <div class="text-center msg-footer">View All Notifications</div>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown dropdown-large">
-                            <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">8</span>
-                                <i class='bx bx-comment'></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a href="javascript:;">
-                                    <div class="msg-header">
-                                        <p class="msg-header-title">Messages</p>
-                                        <p class="msg-header-clear ms-auto">Marks all as read</p>
-                                    </div>
-                                </a>
-                                <div class="header-message-list">
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Daisy Anderson <span class="msg-time float-end">5 sec
-												ago</span></h6>
-                                                <p class="msg-info">The standard chunk of lorem</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Althea Cabardo <span class="msg-time float-end">14
-												sec ago</span></h6>
-                                                <p class="msg-info">Many desktop publishing packages</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Oscar Garner <span class="msg-time float-end">8 min
-												ago</span></h6>
-                                                <p class="msg-info">Various versions have evolved over</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Katherine Pechon <span class="msg-time float-end">15
-												min ago</span></h6>
-                                                <p class="msg-info">Making this the first true generator</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Amelia Doe <span class="msg-time float-end">22 min
-												ago</span></h6>
-                                                <p class="msg-info">Duis aute irure dolor in reprehenderit</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Cristina Jhons <span class="msg-time float-end">2 hrs
-												ago</span></h6>
-                                                <p class="msg-info">The passage is attributed to an unknown</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">James Caviness <span class="msg-time float-end">4 hrs
-												ago</span></h6>
-                                                <p class="msg-info">The point of using Lorem</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Peter Costanzo <span class="msg-time float-end">6 hrs
-												ago</span></h6>
-                                                <p class="msg-info">It was popularised in the 1960s</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">David Buckley <span class="msg-time float-end">2 hrs
-												ago</span></h6>
-                                                <p class="msg-info">Various versions have evolved over</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Thomas Wheeler <span class="msg-time float-end">2 days
-												ago</span></h6>
-                                                <p class="msg-info">If you are going to use a passage</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item" href="javascript:;">
-                                        <div class="d-flex align-items-center">
-                                            <div class="user-online">
-                                                <img src="https://via.placeholder.com/110x110" class="msg-avatar" alt="user avatar">
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <h6 class="msg-name">Johnny Seitz <span class="msg-time float-end">5 days
-												ago</span></h6>
-                                                <p class="msg-info">All the Lorem Ipsum generators</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <a href="javascript:;">
-                                    <div class="text-center msg-footer">View All Messages</div>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="user-box dropdown">
-                    <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://via.placeholder.com/110x110" class="user-img" alt="user avatar">
-                        <div class="user-info ps-3">
-                            <p class="user-name mb-0">Pauline Seitz</p>
-                            <p class="designattion mb-0">Web Designer</p>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a>
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a>
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a>
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a>
-                        </li>
-                        <li>
-                            <div class="dropdown-divider mb-0"></div>
-                        </li>
-                        <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+
     </header>
     <!--end header -->
-    
+
     <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content">
@@ -448,9 +100,9 @@
                 </ul>
                 <div class="tab-content py-3">
                     <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
-								
+
                         <div class="row" style=" position: absolute;width: 90%">
-							<?php  $files = glob("../img/*.*");?>
+                            <?php  $files = glob("../img/*.*");?>
                             <?php
                             $map = json_decode(file_get_contents('../map.json'),1);
                             foreach ($files as $num=>$filename) {
@@ -465,9 +117,9 @@
                                     <input type="text" class="form-control" aria-label="Text input with checkbox" value="<?php $arr = explode('_',$filename); echo end($arr)?>">
                                 </div>
                             <?php } ?>
-							
+
                         </div>
-                       		 <div class="" style="position: relative;">
+                        <div class="" style="position: relative;">
                             <?php
                             foreach ($files as $num=>$filename) {
                                 $temp = explode('/',$filename);
@@ -484,18 +136,18 @@
                                 <?php
                             }
                             ?>
-							</div>	
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="primaryprofile" role="tabpanel">
                         <div class="card-body">
                             <?php
                             $videos = json_decode(file_get_contents('../videos.json'));
                             foreach ($videos as $video=>$key){?>
-                            <div class="form-check js_video">
-                                <input class="form-check-input" type="radio" name="selectVideo" >
-                                <input class="form-control" name="key" value="<?=$key?>" style="width: 88%; display: inline-block">
-                                <input class="form-control" name="video" value="<?=$video?>" style="width: 10%; display: inline-block">
-                            </div>
+                                <div class="form-check js_video">
+                                    <input class="form-check-input" type="radio" name="selectVideo" >
+                                    <input class="form-control" name="key" value="<?=$key?>" style="width: 88%; display: inline-block">
+                                    <input class="form-control" name="video" value="<?=$video?>" style="width: 10%; display: inline-block">
+                                </div>
                             <?php }?>
                             <div class="form-check js_video empty">
                                 <input class="form-check-input" type="radio" name="selectVideo">
@@ -526,14 +178,14 @@
                                     <div class="card-body">
                                         <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
                                             <div class="carousel-inner">
-											<?php  $files = glob("../demo/*.*");
-											$active = 1;
-											foreach ($files as $num=>$filename) {
-											?>
-                                                <div class="carousel-item <?php if($active){$active=0;?>active<?php }?>">
-                                                    <img src="<?=$filename?>" class="d-block w-100" alt="...">
-                                                </div>
-											<?php }?>
+                                                <?php  $files = glob("../demo/*.*");
+                                                $active = 1;
+                                                foreach ($files as $num=>$filename) {
+                                                    ?>
+                                                    <div class="carousel-item <?php if($active){$active=0;?>active<?php }?>">
+                                                        <img src="<?=$filename?>" class="d-block w-100" alt="...">
+                                                    </div>
+                                                <?php }?>
                                             </div>
                                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Previous</span>
@@ -557,20 +209,20 @@
                                                 <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
                                             </ol>
                                             <div class="carousel-inner">
-												<?php 
-												$images = json_decode(file_get_contents('../images.json'),1);
-												$active = 1;
-												foreach ($images as $name=>$image) {
-												?>
-                                                <div class="carousel-item <?php if($active){$active=0;?>active<?php }?>">
-                                                    <img src="<?=$image?>" class="d-block w-100" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h5> </h5>
-                                                        <p><?=$name?></p>
+                                                <?php
+                                                $images = json_decode(file_get_contents('../images.json'),1);
+                                                $active = 1;
+                                                foreach ($images as $name=>$image) {
+                                                    ?>
+                                                    <div class="carousel-item <?php if($active){$active=0;?>active<?php }?>">
+                                                        <img src="<?=$image?>" class="d-block w-100" alt="...">
+                                                        <div class="carousel-caption d-none d-md-block">
+                                                            <h5> </h5>
+                                                            <p><?=$name?></p>
+                                                        </div>
                                                     </div>
-                                                </div>
-												<?php }?>
-                                             
+                                                <?php }?>
+
                                             </div>
                                             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Previous</span>
@@ -584,57 +236,115 @@
                             </div>
                         </div>
                     </div>
-					<div class="tab-pane fade " id="primaryinit" role="tabpanel">
+                    <div class="tab-pane fade " id="primaryinit" role="tabpanel">
+                        <?php $init=json_decode(file_get_contents('../init.json'),1);?>
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
+                            <div class="col">
+                                <div class="card radius-10 bg-primary bg-gradient">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Раунд</p>
+                                                <h4 class="my-1 text-white js-init-round"><?=$init['round']?></h4>
+                                            </div>
+                                            <div class="text-white ms-auto font-35"><i class="bx bx-cart-alt"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card radius-10 bg-danger bg-gradient">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Ходит</p>
+                                                <h4 class="my-1 text-white js-init-current"><?=getCurrentPlayer($init)?></h4>
+                                            </div>
+                                            <div class="text-white ms-auto font-35"><i class="bx bx-dollar"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card radius-10 bg-warning bg-gradient">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-dark">Следующий ход</p>
+                                                <h4 class="text-dark my-1 js-init-next"><?=getNextPlayer($init)?></h4>
+                                            </div>
+                                            <div class="text-dark ms-auto font-35"><i class="bx bx-user-pin"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card radius-10 bg-success bg-gradient">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div>
+                                                <p class="mb-0 text-white">Резерв</p>
+                                                <h4 class="my-1 text-white">пригодится</h4>
+                                            </div>
+                                            <div class="text-white ms-auto font-35"><i class="bx bx-comment-detail"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card">
                             <div class="card-body">
                                 <div class="input-group">
+                                    <span class="input-group-text">Sur</span>
                                     <span class="input-group-text">Pl</span>
                                     <input type="text" value="Init" aria-label="First" class="form-control" style="max-width: 61px;" disabled readonly>
                                     <input type="text" value="Имя" aria-label="Last" class="form-control" disabled readonly>
                                 </div>
-                                <?php $players=json_decode(file_get_contents('../init.json'),1);
-                                foreach ($players['all'] as $player){?>
-                                <div class="input-group">
-
-                                    <div class="input-group-text">
-                                        <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                <?php foreach ($init['all'] as $player){?>
+                                    <div class="input-group js-init-row"
+                                        <?php if (getCurrentPlayer($init)==$player['name']){?>
+                                            style="background-color: brown;"
+                                         <?php }?>
+                                        <?php if (getNextPlayer($init)==$player['name']){?>
+                                            style="background-color: darkkhaki;"
+                                        <?php }?>
+                                    >
+                                        <div class="input-group-text">
+                                            <input <?=($player['surprise']=='true')?'checked':''?> class="form-check-input js-row-surprise" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                        </div>
+                                        <div class="input-group-text">
+                                            <input <?=($player['player']=='true')?'checked':''?> class="form-check-input js-row-player" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                        </div>
+                                        <input type="text" aria-label="First" class="form-control  js-row-init" value="<?=$player['init']?>" style="max-width: 61px;">
+                                        <input type="text" aria-label="Last" class="form-control js-row-name" value="<?=$player['name']?>">
+                                        <button type="button" class="btn btn-light">ICON</button>
+                                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end" style="margin: 0px; display: none">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                        </ul>
+                                        <button type="button" class="btn btn-light js-remove-line"><i class="lni lni-trash"></i></i></button>
                                     </div>
-                                    <input type="text" aria-label="First" class="form-control" style="max-width: 61px;">
-                                    <input type="text" aria-label="Last" class="form-control" value="<?=$player['name']?>">
-                                    <button type="button" class="btn btn-light">ICON</button>
-                                    <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end" style="margin: 0px;">
-                                        <li><a class="dropdown-item" href="#">Action</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Another action</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Something else here</a>
-                                        </li>
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-                                        <li><a class="dropdown-item" href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-
-                                </div>
                                 <?php } ?>
+                                <button type="button" class="btn btn-light" id="new_line"><i class="lni lni-circle-plus"></i></button>
+                                <button type="button" class="btn btn-light" id="save_config"><i class="lni lni-save"></i></button>
                                 <hr>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-light">
-                                        <i class="bx bx-rotate-right me-0"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-light" title="раунд">0</i>
-                                    </button>
-                                    <button type="button" class="btn btn-light" style="transform: rotate(180deg);"><i class="bx bx-up-arrow"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-light"><i class="bx bx-right-arrow"></i>
-                                    </button>
+                                    <button type="button" class="btn btn-light" id="init_reset"><i class="bx bx-rotate-right me-0"></i></button>
+                                    <button type="button" class="btn btn-light" style="transform: rotate(180deg);"><i class="bx bx-up-arrow"></i></button>
+                                    <button type="button" class="btn btn-light"><i class="bx bx-right-arrow"></i></button>
                                 </div>
                             </div>
                         </div>
-					</div>
+                    </div>
                 </div>
             </div>
 
