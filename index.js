@@ -237,6 +237,7 @@ function checkConfig() {
             if (json.locale && json.locale != yid) {
                 yid = json.locale;
                 player.loadVideoById(yid);
+				
             }
         },
         error: function (xhr, textStatus, errorThrown) {
@@ -281,7 +282,6 @@ $(document).ready(function() {
 
     reloadImage();
     reloadVideo();
-
     setInterval(checkConfig, 2000);
     setInterval(checkMap, 2000);
 });
