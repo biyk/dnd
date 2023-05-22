@@ -234,7 +234,14 @@ $(function() {
 	}
 
 	let drowRows = function () {
-		$('.js-init-row')
+		$('.js-init-row').removeClass('current next');
+		$('.js-init-row').filter(function () {
+			return $(this).find('.js-row-init').val()==init.try
+		}).addClass('current');
+
+		$('.js-init-row').filter(function () {
+			return $(this).find('.js-row-init').val()==init.next
+		}).addClass('current');
 	}
 	
 	$('.js-init-round').on('click', function(){
