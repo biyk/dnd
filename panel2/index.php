@@ -305,14 +305,14 @@
                                     <input type="text" value="Имя" aria-label="Last" class="form-control" disabled readonly>
                                 </div>
                                 <?php foreach ($init['all'] as $player){?>
-                                    <div class="input-group js-init-row"
-                                        <?php if (getCurrentPlayer($init)==$player['name']){?>
-                                            style="background-color: brown;"
-                                         <?php }?>
-                                        <?php if (getNextPlayer($init)==$player['name']){?>
-                                            style="background-color: darkkhaki;"
-                                        <?php }?>
-                                    >
+                                    <div class="input-group js-init-row
+                                     <?php if (getCurrentPlayer($init)==$player['name']){?>
+                                            current
+                                    <?php }?>
+                                    <?php if (getNextPlayer($init)==$player['name']){?>
+                                               next
+                                    <?php }?>
+                                       " >
                                         <div class="input-group-text">
                                             <input <?=(!empty($player['surprise']) && $player['surprise']=='true')?'checked':''?> class="form-check-input js-row-surprise" type="checkbox" value="" aria-label="Checkbox for following text input">
                                         </div>

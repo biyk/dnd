@@ -230,8 +230,13 @@ $(function() {
 				init
 			}
 		});
+		
 	}
 
+	let drowRows = function () {
+		$('.js-init-row')
+	}
+	
 	$('.js-init-round').on('click', function(){
 		init = init || [];
 		let round = init.round = prompt('Номер раунда', init.round);
