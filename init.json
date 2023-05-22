@@ -1,39 +1,39 @@
 {
-    "round": "0",
-    "try": "2",
+    "round": "5",
+    "try": "10",
     "all": [
         {
-            "init": "1",
+            "init": "12",
             "name": "Гатц",
             "player": "true",
             "surprise": "true"
         },
         {
-            "init": "02",
+            "init": "21",
             "name": "Эльза",
             "player": "true",
             "surprise": "false"
         },
         {
-            "init": "03",
+            "init": "3",
             "name": "Эмбер",
             "player": "true",
             "surprise": "false"
         },
         {
-            "init": "04",
+            "init": "7",
             "name": "Сок",
             "player": "true",
             "surprise": "true"
         },
         {
-            "init": "05",
+            "init": "10",
             "name": "Гоблины",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "06",
+            "init": "14",
             "name": "газебо",
             "player": "false",
             "surprise": "true"

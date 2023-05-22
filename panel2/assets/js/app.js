@@ -253,8 +253,8 @@ $(function() {
 		}).addClass('next');
 
 		$('.js-init-round').text(init.round);
-		$('.js-init-current').text(tryInfo['init'][init.try].name);
-		$('.js-init-next').text(tryInfo['init'][next_try].name);
+		if (tryInfo['init'][init.try]) $('.js-init-current').text(tryInfo['init'][init.try].name);
+		if (tryInfo['init'][next_try]) $('.js-init-next').text(tryInfo['init'][next_try].name);
 	}
 	
 	$('.js-init-round').on('click', function(){
@@ -284,7 +284,7 @@ $(function() {
 			});
 		}
 
-
+		tryInfo = {init:{}};
 		init.all.map(e=>{
 			let myInit = parseInt(e.init);
 			tryInfo['min'] = tryInfo['min']?Math.min(tryInfo['min'],myInit) : myInit;
