@@ -218,8 +218,9 @@ $(function() {
 			init.all.push({
 				init: $this.find('.js-row-init').val(),
 				name: $this.find('.js-row-name').val(),
-				player: $this.find('.js-row-player').is(':checked')
-			})
+				player: $this.find('.js-row-player').is(':checked'),
+				surprise: $this.find('.js-row-surprise').is(':checked'),
+			});
 		});
 
 		$.ajax({
@@ -244,6 +245,52 @@ $(function() {
 	$('.js-remove-line').on('.click', function(){
 		$('.js-init-row').parents('.js-init-row').remove();
 		saveInit();
+	});
+
+	$('.js-lets-play').on('click', function () {
+		//определяем какой это раунд
+		let {round} = init;
+		let $players = $('.js-init-row');
+		// если это раунд сюрприз
+
+		if (round==='0'){
+			$players = $('.js-init-row').filter(function () {
+				return $(this).find('.js-row-surprise:checked').length;
+			});
+		}
+
+		let tryInfo = {init:{}};
+		init.all.map(e=>{
+			let myInit = parseInt(e.init);
+			tryInfo['min'] = tryInfo['min']?Math.min(tryInfo['min'],myInit) : myInit;
+			tryInfo['max'] = tryInfo['max']?Math.max(tryInfo['max'],myInit) : myInit;
+			tryInfo['init'][myInit] = e;
+		});
+
+		// если битва еще не началась
+		if(!init.try) {
+			console.log('go');
+			init.try = tryInfo['min'];
+		} else {
+			//поиск следующего игрока
+			console.log('continue');
+			let next_try = null;
+			$.each(tryInfo['init'], (i, e) =>{
+				let local_init = parseInt(e.init);
+				console.log('check ',local_init);
+				if (local_init > init.try && !next_try) next_try =  local_init;
+			});
+			console.log('next_try '+next_try);
+			if (next_try) {
+				init.try = next_try;
+			} else {//если его нет следующий рануд и берем первого
+				init.try = tryInfo['min'];
+				init.round++;
+			}
+		}
+		console.log(init);
+		saveInit();
+
 	});
 });
 

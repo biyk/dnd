@@ -340,7 +340,7 @@
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <button type="button" class="btn btn-light" id="init_reset"><i class="bx bx-rotate-right me-0"></i></button>
                                     <button type="button" class="btn btn-light" style="transform: rotate(180deg);"><i class="bx bx-up-arrow"></i></button>
-                                    <button type="button" class="btn btn-light"><i class="bx bx-right-arrow"></i></button>
+                                    <button type="button" class="btn btn-light js-lets-play"><i class="bx bx-right-arrow"></i></button>
                                 </div>
                             </div>
                         </div>
