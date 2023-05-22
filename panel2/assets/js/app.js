@@ -230,7 +230,7 @@ $(function() {
 				init
 			}
 		});
-		
+		drowRows();
 	}
 
 	let drowRows = function () {
@@ -239,9 +239,22 @@ $(function() {
 			return $(this).find('.js-row-init').val()==init.try
 		}).addClass('current');
 
+
+		let next_try = null;
+		$.each(tryInfo['init'], (i, e) =>{
+			let local_init = parseInt(e.init);
+			console.log('check ',local_init);
+			if (local_init > init.try && !next_try) next_try =  local_init;
+		});
+
+		next_try = next_try || tryInfo['min'];
 		$('.js-init-row').filter(function () {
-			return $(this).find('.js-row-init').val()==init.next
-		}).addClass('current');
+			return $(this).find('.js-row-init').val()==next_try
+		}).addClass('next');
+
+		$('.js-init-round').text(init.round);
+		$('.js-init-current').text(tryInfo['init'][init.try].name);
+		$('.js-init-next').text(tryInfo['init'][next_try].name);
 	}
 	
 	$('.js-init-round').on('click', function(){
@@ -258,7 +271,7 @@ $(function() {
 		$('.js-init-row').parents('.js-init-row').remove();
 		saveInit();
 	});
-
+	let tryInfo = {init:{}};
 	$('.js-lets-play').on('click', function () {
 		//определяем какой это раунд
 		let {round} = init;
@@ -271,7 +284,7 @@ $(function() {
 			});
 		}
 
-		let tryInfo = {init:{}};
+
 		init.all.map(e=>{
 			let myInit = parseInt(e.init);
 			tryInfo['min'] = tryInfo['min']?Math.min(tryInfo['min'],myInit) : myInit;
@@ -302,7 +315,7 @@ $(function() {
 		}
 		console.log(init);
 		saveInit();
-
+		
 	});
 });
 

@@ -94,7 +94,7 @@ if (!function_exists('pre'))
 
 function orderTry(&$init){
     usort($init['all'], function($a, $b) {
-        return $b['init'] - $a['init'];
+        return $a['init'] - $b['init'];
     });
 }
 
@@ -109,9 +109,10 @@ function getCurrentPlayer($init){
 function getNextPlayer($init){
     orderTry($init);
     if (!$init['try']) return '--';
-    $try = $init['try']-1;
+    $try = $init['try']+1;
     foreach ($init['all'] as $player){
-        if ($player['init']<=$try) return $player['name'];
+        $local_init = (int) $player['init'];
+        if ( $local_init>=$try) return $player['name'];
     }
     return '???';
 }
