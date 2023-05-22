@@ -1,35 +1,35 @@
 {
-    "round": "0",
+    "round": "8",
     "try": "",
     "all": [
         {
             "init": "0",
             "name": "Гатц",
-            "surprise": "",
             "player": "true"
         },
         {
             "init": "0",
             "name": "Эльза",
-            "surprise": "",
             "player": "true"
         },
         {
             "init": "0",
             "name": "Эмбер",
-            "surprise": "",
             "player": "true"
         },
         {
             "init": "0",
             "name": "Сок",
-            "surprise": "",
             "player": "true"
         },
         {
             "init": "0",
             "name": "Гоблины",
-            "surprise": "true",
+            "player": "false"
+        },
+        {
+            "init": "0",
+            "name": "газебо",
             "player": "false"
         }
     ]

@@ -314,7 +314,7 @@
                                         <?php }?>
                                     >
                                         <div class="input-group-text">
-                                            <input <?=($player['surprise']=='true')?'checked':''?> class="form-check-input js-row-surprise" type="checkbox" value="" aria-label="Checkbox for following text input">
+                                            <input <?=(!empty($player['surprise']) && $player['surprise']=='true')?'checked':''?> class="form-check-input js-row-surprise" type="checkbox" value="" aria-label="Checkbox for following text input">
                                         </div>
                                         <div class="input-group-text">
                                             <input <?=($player['player']=='true')?'checked':''?> class="form-check-input js-row-player" type="checkbox" value="" aria-label="Checkbox for following text input">

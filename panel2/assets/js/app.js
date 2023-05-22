@@ -210,9 +210,10 @@ $(function() {
 		$('.js-init-row:last').after($template);
 	});
 
-	$('#save_config').on('click', function () {
+	let saveInit = function(){
 		init = init || [];
-		$('.js-init-row:last').each(function () {
+		init.all = [];
+		$('.js-init-row').each(function () {
 			let $this = $(this);
 			init.all.push({
 				init: $this.find('.js-row-init').val(),
@@ -228,7 +229,22 @@ $(function() {
 				init
 			}
 		});
+	}
+
+	$('.js-init-round').on('click', function(){
+		init = init || [];
+		let round = init.round = prompt('Номер раунда', init.round);
+		$('.js-init-round').text(round);
+		saveInit();
 	})
+	$('#save_config').on('click', function () {
+		saveInit();
+	});
+	
+	$('.js-remove-line').on('.click', function(){
+		$('.js-init-row').parents('.js-init-row').remove();
+		saveInit();
+	});
 });
 
 // Создаем распознаватель
