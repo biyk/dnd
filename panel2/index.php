@@ -97,6 +97,15 @@
                             </div>
                         </a>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link " data-bs-toggle="tab" href="#primarygen" role="tab" aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon"><i class="bx bx-microphone font-18 me-1"></i>
+                                </div>
+                                <div class="tab-title">Генераторы</div>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
                 <div class="tab-content py-3">
                     <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
@@ -339,6 +348,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="tab-pane fade " id="primarygen" role="tabpanel">
+            
                     </div>
                 </div>
             </div>
