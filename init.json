@@ -1,15 +1,14 @@
 {
-    "round": "5",
-    "try": "10",
+    "round": "2",
     "all": [
         {
-            "init": "12",
+            "init": "1",
             "name": "Гатц",
             "player": "true",
             "surprise": "true"
         },
         {
-            "init": "21",
+            "init": "2",
             "name": "Эльза",
             "player": "true",
             "surprise": "false"
@@ -21,22 +20,23 @@
             "surprise": "false"
         },
         {
-            "init": "7",
+            "init": "4",
             "name": "Сок",
             "player": "true",
             "surprise": "true"
         },
         {
-            "init": "10",
+            "init": "5",
             "name": "Гоблины",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "14",
+            "init": "6",
             "name": "газебо",
             "player": "false",
             "surprise": "true"
         }
-    ]
+    ],
+    "try": "1"
 }

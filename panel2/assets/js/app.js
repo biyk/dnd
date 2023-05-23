@@ -199,6 +199,7 @@ $(function() {
 		});
 		$('.js-row-init').val('');
 		$('.js-row-surprise').val('');
+		saveInit();
 	});
 
 	$('#new_line').on('click', function () {
@@ -213,6 +214,7 @@ $(function() {
 	let saveInit = function(){
 		init = init || [];
 		init.all = [];
+		init.try = init.try || '';
 		$('.js-init-row').each(function () {
 			let $this = $(this);
 			init.all.push({
@@ -243,7 +245,7 @@ $(function() {
 		let next_try = null;
 		$.each(tryInfo['init'], (i, e) =>{
 			let local_init = parseInt(e.init);
-			console.log('check ',local_init);
+			//console.log('check ',local_init);
 			if (local_init > init.try && !next_try) next_try =  local_init;
 		});
 
@@ -256,7 +258,20 @@ $(function() {
 		if (tryInfo['init'][init.try]) $('.js-init-current').text(tryInfo['init'][init.try].name);
 		if (tryInfo['init'][next_try]) $('.js-init-next').text(tryInfo['init'][next_try].name);
 	}
-	
+
+	function getNextTry() {
+		let next_try = null;
+		$.each(tryInfo['init'], (i, e) =>{
+			let local_init = parseInt(e.init);
+			//console.log('check ',local_init);
+			if (local_init > init.try && !next_try) next_try =  local_init;
+		});
+
+		next_try = next_try || tryInfo['min'];
+		return next_try;
+	}
+
+
 	$('.js-init-round').on('click', function(){
 		init = init || [];
 		let round = init.round = prompt('Номер раунда', init.round);
@@ -274,23 +289,28 @@ $(function() {
 	let tryInfo = {init:{}};
 	$('.js-lets-play').on('click', function () {
 		//определяем какой это раунд
-		let {round} = init;
-		let $players = $('.js-init-row');
+		window.temp = init;
 		// если это раунд сюрприз
-
-		if (round==='0'){
-			$players = $('.js-init-row').filter(function () {
-				return $(this).find('.js-row-surprise:checked').length;
-			});
-		}
-
+		if (init.round==0)	 console.log('раунд сюрприз');
 		tryInfo = {init:{}};
 		init.all.map(e=>{
-			let myInit = parseInt(e.init);
-			tryInfo['min'] = tryInfo['min']?Math.min(tryInfo['min'],myInit) : myInit;
-			tryInfo['max'] = tryInfo['max']?Math.max(tryInfo['max'],myInit) : myInit;
-			tryInfo['init'][myInit] = e;
+			if (init.round==0){
+				//console.log(e.surprise);
+				if (e.surprise){
+					let myInit = parseInt(e.init);
+					tryInfo['min'] = tryInfo['min']?Math.min(tryInfo['min'],myInit) : myInit;
+					tryInfo['max'] = tryInfo['max']?Math.max(tryInfo['max'],myInit) : myInit;
+					tryInfo['init'][myInit] = e;
+				}
+			} else {
+				let myInit = parseInt(e.init);
+				tryInfo['min'] = tryInfo['min']?Math.min(tryInfo['min'],myInit) : myInit;
+				tryInfo['max'] = tryInfo['max']?Math.max(tryInfo['max'],myInit) : myInit;
+				tryInfo['init'][myInit] = e;
+			}
+
 		});
+		console.log(tryInfo);
 
 		// если битва еще не началась
 		if(!init.try) {
@@ -302,10 +322,10 @@ $(function() {
 			let next_try = null;
 			$.each(tryInfo['init'], (i, e) =>{
 				let local_init = parseInt(e.init);
-				console.log('check ',local_init);
+				//console.log('check ',local_init);
 				if (local_init > init.try && !next_try) next_try =  local_init;
 			});
-			console.log('next_try '+next_try);
+			//console.log('next_try '+next_try);
 			if (next_try) {
 				init.try = next_try;
 			} else {//если его нет следующий рануд и берем первого
