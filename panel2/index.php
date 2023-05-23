@@ -203,11 +203,6 @@
                                 <div class="card">
                                     <div class="card-body">
                                         <div id="carouselExampleCaptions" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
-                                            <ol class="carousel-indicators">
-                                                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
-                                                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
-                                                <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
-                                            </ol>
                                             <div class="carousel-inner">
                                                 <?php
                                                 $images = json_decode(file_get_contents('../images.json'),1);
@@ -217,7 +212,7 @@
                                                     <div class="carousel-item <?php if($active){$active=0;?>active<?php }?>">
                                                         <img src="<?=$image?>" class="d-block w-100" alt="...">
                                                         <div class="carousel-caption d-none d-md-block">
-                                                            <h5> </h5>
+                                                            <h5><button class="js-show-demo" data-src="<?=$image?>"><i class="lni lni-display-alt"></i></button></h5>
                                                             <p><?=$name?></p>
                                                         </div>
                                                     </div>

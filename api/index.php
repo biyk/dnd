@@ -48,6 +48,10 @@ if ($type=='map'){
 	file_put_contents('../map.json', json_encode($json_map,JSON_PRETTY_PRINT));
 }
 
+if ($type=='demo'){
+    $image = $_REQUEST['src'];
+    $config['command'] = "loadDemo('".$image."');";
+}
 
 if ($type=='videos'){
     $new_videos = $_REQUEST['videos'];

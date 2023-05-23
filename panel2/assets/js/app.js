@@ -215,6 +215,7 @@ $(function() {
 		init = init || [];
 		init.all = [];
 		init.try = init.try || '';
+		init.next = getNextTry();
 		$('.js-init-row').each(function () {
 			let $this = $(this);
 			init.all.push({
@@ -244,9 +245,9 @@ $(function() {
 
 		let next_try = null;
 		$.each(tryInfo['init'], (i, e) =>{
-			let local_init = parseInt(e.init);
+			let local_init = parseFloat(e.init);
 			//console.log('check ',local_init);
-			if (local_init > init.try && !next_try) next_try =  local_init;
+			if (local_init > parseFloat(init.try) && !next_try) next_try =  local_init;
 		});
 
 		next_try = next_try || tryInfo['min'];
@@ -262,9 +263,9 @@ $(function() {
 	function getNextTry() {
 		let next_try = null;
 		$.each(tryInfo['init'], (i, e) =>{
-			let local_init = parseInt(e.init);
+			let local_init = parseFloat(e.init);
 			//console.log('check ',local_init);
-			if (local_init > init.try && !next_try) next_try =  local_init;
+			if (local_init > parseFloat(init.try) && !next_try) next_try =  local_init;
 		});
 
 		next_try = next_try || tryInfo['min'];
@@ -275,6 +276,7 @@ $(function() {
 	$('.js-init-round').on('click', function(){
 		init = init || [];
 		let round = init.round = prompt('Номер раунда', init.round);
+		init.try='';
 		$('.js-init-round').text(round);
 		saveInit();
 	})
@@ -287,29 +289,34 @@ $(function() {
 		saveInit();
 	});
 	let tryInfo = {init:{}};
-	$('.js-lets-play').on('click', function () {
-		//определяем какой это раунд
-		window.temp = init;
-		// если это раунд сюрприз
-		if (init.round==0)	 console.log('раунд сюрприз');
+
+	function getTryInfo(){
 		tryInfo = {init:{}};
 		init.all.map(e=>{
 			if (init.round==0){
 				//console.log(e.surprise);
 				if (e.surprise){
-					let myInit = parseInt(e.init);
+					let myInit = parseFloat(e.init);
 					tryInfo['min'] = tryInfo['min']?Math.min(tryInfo['min'],myInit) : myInit;
 					tryInfo['max'] = tryInfo['max']?Math.max(tryInfo['max'],myInit) : myInit;
 					tryInfo['init'][myInit] = e;
 				}
 			} else {
-				let myInit = parseInt(e.init);
+				let myInit = parseFloat(e.init);
 				tryInfo['min'] = tryInfo['min']?Math.min(tryInfo['min'],myInit) : myInit;
 				tryInfo['max'] = tryInfo['max']?Math.max(tryInfo['max'],myInit) : myInit;
 				tryInfo['init'][myInit] = e;
 			}
 
 		});
+	}
+
+	$('.js-lets-play').on('click', function () {
+		//определяем какой это раунд
+		window.temp = init;
+		// если это раунд сюрприз
+		if (init.round==0)	 console.log('раунд сюрприз');
+		getTryInfo();
 		console.log(tryInfo);
 
 		// если битва еще не началась
@@ -321,9 +328,9 @@ $(function() {
 			console.log('continue');
 			let next_try = null;
 			$.each(tryInfo['init'], (i, e) =>{
-				let local_init = parseInt(e.init);
+				let local_init = parseFloat(e.init);
 				//console.log('check ',local_init);
-				if (local_init > init.try && !next_try) next_try =  local_init;
+				if (local_init > parseFloat(init.try) && !next_try) next_try =  local_init;
 			});
 			//console.log('next_try '+next_try);
 			if (next_try) {
@@ -333,10 +340,23 @@ $(function() {
 				init.round++;
 			}
 		}
+		getTryInfo()
 		console.log(init);
 		saveInit();
 		
 	});
+
+	$('.js-show-demo').on('click', function () {
+		let {src} = $(this).data();
+		$.ajax({
+			url: '../api',
+			data:{
+				type:'demo',
+				src
+			}
+		});
+	});
+
 });
 
 // Создаем распознаватель

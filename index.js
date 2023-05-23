@@ -230,7 +230,7 @@ function checkConfig() {
         url: 'config.php' + '?' + Math.random(),
         dataType: "json",
         success: function (json) {
-            console.re.log(json, yid)
+            //console.re.log(json, yid)
             if (json.command) {
                 eval(json.command);
             }
@@ -241,16 +241,34 @@ function checkConfig() {
             }
         },
         error: function (xhr, textStatus, errorThrown) {
+            //console.error("Error loading config.php:", textStatus, errorThrown);
+        }
+    });
+}
+
+
+function checkInit() {
+    $.ajax({
+        url: 'init.json' + '?' + Math.random(),
+        dataType: "json",
+        success: function (json) {
+            console.log(json, yid)
+            let current = json.all.filter(e=>e.init==json.try)[0];
+            let next = json.all.filter(e=>e.init==json.next)[0];
+            $('.js-init').html('Раунд:'+json.round+'| Ход: '+current.name+'| Далее: '+next.name)
+        },
+        error: function (xhr, textStatus, errorThrown) {
             console.error("Error loading config.php:", textStatus, errorThrown);
         }
     });
 }
+
 function checkMap() {
     $.ajax({
         url: 'map.json' + '?' + Math.random(),
         dataType: "json",
         success: function (json) {
-            console.log(json);
+            //console.log(json);
 			$.each(json, function(chunk,e){
 				if (e=='true'){
 					$('#'+chunk).css('opacity',1);
@@ -284,6 +302,7 @@ $(document).ready(function() {
     reloadVideo();
     setInterval(checkConfig, 2000);
     setInterval(checkMap, 2000);
+    setInterval(checkInit, 2000);
 });
 
 

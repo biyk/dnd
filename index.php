@@ -6,14 +6,13 @@
 </head>
 <body style="margin: 0px">
 <div class="container" style="z-index:100;"></div>
-<button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()" style="
-
-    position: absolute;
-    z-index:100;
-    font-size: 25px;
-
-">▢</button>
-
+<button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()"
+        style="position: absolute;z-index:100;font-size: 25px;"
+>▢</button>
+<span
+        style="position: absolute;z-index:100;font-size: 18px;left: 39px;color: chartreuse;"
+        class="js-init"
+></span>
 <div class="map-wrapper" style="position: relative">
     <?php
     $files = glob("img/*.*");
