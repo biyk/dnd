@@ -350,7 +350,7 @@
                         </div>
                     </div>
                     <div class="tab-pane fade " id="primarygen" role="tabpanel">
-            
+                        <?php include '../includes/primarygen.php'?>
                     </div>
                 </div>
             </div>

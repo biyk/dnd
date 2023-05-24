@@ -357,6 +357,23 @@ $(function() {
 		});
 	});
 
+	$('.js-get-event').on('click', function () {
+		let $this = $(this);
+		let id = $this.attr('id');
+		let data = {
+			location: $('[name="location"]').val()
+		};
+		let {url} = $this.data();
+
+		$.ajax({
+			url:url+'?'+Math.random(),
+			data,
+			success: function (text) {
+				$(`textarea[aria-describedby="${id}"]`).text(text).css('height',text.split("\n").length * 27);
+			}
+		})
+	});
+
 });
 
 // Создаем распознаватель
