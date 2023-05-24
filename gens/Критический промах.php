@@ -1,6 +1,5 @@
-function fixText(text) { const lines = text.split('\n'); let fixedText = ''; for (let i = 0; i < lines.length; i++) { const line = lines[i].trim(); if (line.match(/^\d+./)) { fixedText += line + ' '; } else { fixedText += line + '\n'; } } return fixedText.trim(); }
 <?php
-
+//function fixText(text) { const lines = text.split('\n'); let fixedText = ''; for (let i = 0; i < lines.length; i++) { const line = lines[i].trim(); if (line.match(/^\d+./)) { fixedText += line + ' '; } else { fixedText += line + '\n'; } } return fixedText.trim(); }
 
 function mele(){
     $data = explode("\n",preg_replace('/\d+/u', '',
