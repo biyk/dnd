@@ -369,7 +369,11 @@ $(function() {
 			url:url+'?'+Math.random(),
 			data,
 			success: function (text) {
-				$(`textarea[aria-describedby="${id}"]`).text(text).css('height',text.split("\n").length * 27);
+				let $ta = $(`textarea[aria-describedby="${id}"]`).height(27);
+				$ta.text(text);
+				console.log(
+					$ta.css('height', $ta[0].scrollHeight)
+				)
 			}
 		})
 	});
