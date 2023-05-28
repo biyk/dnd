@@ -17,7 +17,9 @@
             ?>
             <div class="input-group mb-3">
                 <button class="btn btn-light js-get-event" type="button" id="<?=md5($filename)?>" data-url="<?=$filename?>"><?=$name?></button>
-                <textarea type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="<?=md5($filename)?>"></textarea>
+                <textarea type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="<?=md5($filename)?>"
+                          style="height: 27px;"
+                ></textarea>
             </div>
         <?php }?>
     </div>
