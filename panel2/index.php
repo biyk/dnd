@@ -410,7 +410,7 @@
 <script src="assets/plugins/metismenu/js/metisMenu.min.js"></script>
 <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 <!--app JS-->
-<script src="assets/js/app.js"></script>
+<script src="assets/js/app.js?<?=time()?>"></script>
 </body>
 
 </html>

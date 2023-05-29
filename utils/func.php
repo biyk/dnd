@@ -109,7 +109,13 @@ function getCurrentPlayer($init){
 function getNextPlayer($init){
     orderTry($init);
     if (!$init['try']) return '--';
-    $try = $init['try']+1;
+    if ($init['next']) {
+        foreach ($init['all'] as $player){
+            $local_init = (int) $player['init'];
+            if ( $local_init==$init['next']) return $player['name'];
+        }
+    };
+    $try = $init['try']-1;
     foreach ($init['all'] as $player){
         $local_init = (int) $player['init'];
         if ( $local_init>=$try) return $player['name'];

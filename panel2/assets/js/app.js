@@ -211,11 +211,27 @@ $(function() {
 		$('.js-init-row:last').after($template);
 	});
 
+	let checkRows = function () {
+		$('.js-init-row').each(function () {
+			let $this = $(this);
+			let init = parseFloat($this.find('.js-row-init').val());
+			let $doubles = $('.js-init-row').filter(function () {
+				return $(this).find('.js-row-init').val() == init;
+			});
+
+			if ($doubles.length>1){
+				$this.find('.js-row-init').val(Math.round(10*(init+0.1))/10);
+				checkRows();
+			}
+		});
+	}
+	
 	let saveInit = function(){
 		init = init || [];
 		init.all = [];
 		init.try = init.try || '';
-		init.next = getNextTry();
+		init.next = getNextTry() || tryInfo['max'];
+
 		$('.js-init-row').each(function () {
 			let $this = $(this);
 			init.all.push({
@@ -243,14 +259,8 @@ $(function() {
 		}).addClass('current');
 
 
-		let next_try = null;
-		$.each(tryInfo['init'], (i, e) =>{
-			let local_init = parseFloat(e.init);
-			//console.log('check ',local_init);
-			if (local_init > parseFloat(init.try) && !next_try) next_try =  local_init;
-		});
+		let next_try = getNextTry() || tryInfo['max'];
 
-		next_try = next_try || tryInfo['min'];
 		$('.js-init-row').filter(function () {
 			return $(this).find('.js-row-init').val()==next_try
 		}).addClass('next');
@@ -261,14 +271,16 @@ $(function() {
 	}
 
 	function getNextTry() {
-		let next_try = null;
+		let next_try = 0;
 		$.each(tryInfo['init'], (i, e) =>{
 			let local_init = parseFloat(e.init);
-			//console.log('check ',local_init);
-			if (local_init > parseFloat(init.try) && !next_try) next_try =  local_init;
-		});
 
-		next_try = next_try || tryInfo['min'];
+			if (local_init < parseFloat(init.try) ) {
+				next_try =  Math.max(next_try,local_init);
+			}
+		});
+		next_try = next_try || null;
+		console.log(next_try);
 		return next_try;
 	}
 
@@ -281,11 +293,12 @@ $(function() {
 		saveInit();
 	})
 	$('#save_config').on('click', function () {
+		checkRows();
 		saveInit();
 	});
-	
-	$('.js-remove-line').on('.click', function(){
-		$('.js-init-row').parents('.js-init-row').remove();
+
+	$('.js-remove-line').on('click', function(){
+		$(this).parents('.js-init-row').remove();
 		saveInit();
 	});
 	let tryInfo = {init:{}};
@@ -314,29 +327,20 @@ $(function() {
 	$('.js-lets-play').on('click', function () {
 		//определяем какой это раунд
 		window.temp = init;
-		// если это раунд сюрприз
-		if (init.round==0)	 console.log('раунд сюрприз');
 		getTryInfo();
-		console.log(tryInfo);
 
 		// если битва еще не началась
 		if(!init.try) {
 			console.log('go');
-			init.try = tryInfo['min'];
+			init.try = tryInfo['max'];
 		} else {
 			//поиск следующего игрока
-			console.log('continue');
-			let next_try = null;
-			$.each(tryInfo['init'], (i, e) =>{
-				let local_init = parseFloat(e.init);
-				//console.log('check ',local_init);
-				if (local_init > parseFloat(init.try) && !next_try) next_try =  local_init;
-			});
-			//console.log('next_try '+next_try);
+			let next_try = getNextTry();
+			console.log('next_try '+next_try);
 			if (next_try) {
 				init.try = next_try;
 			} else {//если его нет следующий рануд и берем первого
-				init.try = tryInfo['min'];
+				init.try = tryInfo['max'];
 				init.round++;
 			}
 		}

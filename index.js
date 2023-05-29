@@ -252,7 +252,7 @@ function checkInit() {
         url: 'init.json' + '?' + Math.random(),
         dataType: "json",
         success: function (json) {
-            console.log(json, yid)
+            console.log(json.try)
             let current = json.all.filter(e=>e.init==json.try)[0];
             let next = json.all.filter(e=>e.init==json.next)[0];
             $('.js-init').html('Раунд:'+json.round+'| Ход: '+current.name+'| Далее: '+next.name)
