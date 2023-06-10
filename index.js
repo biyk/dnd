@@ -252,10 +252,18 @@ function checkInit() {
         url: 'init.json' + '?' + Math.random(),
         dataType: "json",
         success: function (json) {
-            console.log(json, yid)
-            let current = json.all.filter(e=>e.init==json.try)[0];
-            let next = json.all.filter(e=>e.init==json.next)[0];
-            $('.js-init').html('Раунд:'+json.round+'| Ход: '+current.name+'| Далее: '+next.name)
+
+            console.log(json.try)
+
+			let round = json.round;
+			let _try = json.try;
+			if (round && _try){
+				let current = json.all.filter(e=>e.init==json.try)[0];
+				let next = json.all.filter(e=>e.init==json.next)[0];
+				$('.js-init').html('Раунд:'+json.round+'| Ход: '+current.name+'| Далее: '+next.name).show();
+			} else {
+				$('.js-init').hide();
+			}
         },
         error: function (xhr, textStatus, errorThrown) {
             console.error("Error loading config.php:", textStatus, errorThrown);
