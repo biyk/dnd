@@ -94,7 +94,7 @@ if (!function_exists('pre'))
 
 function orderTry(&$init){
     usort($init['all'], function($a, $b) {
-        return $a['init'] - $b['init'];
+        return (int) $a['init'] - (int) $b['init'];
     });
 }
 
