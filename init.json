@@ -1,48 +1,67 @@
 {
-    "round": "0",
+    "round": "9",
     "all": [
         {
-            "init": "",
-            "name": "Гатц",
+            "init": "18.2",
+            "name": "Тархун",
             "player": "true",
             "surprise": "false"
         },
         {
-            "init": "",
-            "name": "Эльза",
+            "init": "19.1",
+            "name": "Колотушка",
             "player": "true",
             "surprise": "false"
         },
         {
-            "init": "",
-            "name": "Эмбер",
-            "player": "true",
-            "surprise": "true"
-        },
-        {
-            "init": "",
-            "name": "Сок",
+            "init": "18.1",
+            "name": "Лериса",
             "player": "true",
             "surprise": "false"
         },
         {
-            "init": "",
-            "name": "Абатор",
-            "player": "false",
-            "surprise": "true"
+            "init": "13",
+            "name": "Туман ",
+            "player": "true",
+            "surprise": "false"
         },
         {
-            "init": "",
-            "name": "гоблинс",
+            "init": "8",
+            "name": "Мехен",
             "player": "false",
-            "surprise": "true"
+            "surprise": "false"
         },
         {
-            "init": "",
-            "name": "каракатица",
+            "init": "4",
+            "name": "Дроу",
             "player": "false",
-            "surprise": "true"
+            "surprise": "false"
+        },
+        {
+            "init": "18",
+            "name": "элитные дроу",
+            "player": "false",
+            "surprise": "false"
+        },
+        {
+            "init": "7",
+            "name": "Ильвара",
+            "player": "false",
+            "surprise": "false"
+        },
+        {
+            "init": "1",
+            "name": "Пауки",
+            "player": "false",
+            "surprise": "false"
+        },
+        {
+            "init": "19",
+            "name": "Стул",
+            "player": "false",
+            "surprise": "false"
         }
     ],
-    "try": ""
+    "try": "8",
+    "next": "7"
 }
