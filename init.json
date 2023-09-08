@@ -3,29 +3,35 @@
     "all": [
         {
             "init": "",
-            "name": "Гатц",
+            "name": "Туман",
             "player": "true",
             "surprise": "false"
         },
         {
             "init": "",
-            "name": "Эльза",
+            "name": "Тархун",
             "player": "true",
             "surprise": "false"
         },
         {
             "init": "",
-            "name": "Эмбер",
+            "name": "Лериса",
             "player": "true",
             "surprise": "true"
         },
         {
             "init": "",
-            "name": "Сок",
+            "name": "Колотушка",
+            "player": "true",
+            "surprise": "false"
+        },
+        {
+            "init": "",
+            "name": "Мехен",
             "player": "true",
             "surprise": "false"
         }
     ],
     "try": "",
-    "rating": "0"
+    "rating": "1"
 }
