@@ -253,7 +253,7 @@ function checkInit() {
         dataType: "json",
         success: function (json) {
 
-            console.log(json.try)
+            console.log(json)
 
 			let round = json.round;
 			let _try = json.try;
@@ -264,6 +264,7 @@ function checkInit() {
 			} else {
 				$('.js-init').hide();
 			}
+            showAlert(json.rating);
         },
         error: function (xhr, textStatus, errorThrown) {
             console.error("Error loading config.php:", textStatus, errorThrown);
@@ -313,6 +314,14 @@ $(document).ready(function() {
     setInterval(checkInit, 2000);
 });
 
+
+function showAlert(num= 0) {
+    $('[name="rating"]').prop('checked', false);
+    $('.rating-area').toggle(num>0);
+    if (num) {
+        $('[name="rating"][value="'+num+'"]').prop('checked', 'checked')
+    }
+}
 
 /**
  * Показывает страницу с подсказкой

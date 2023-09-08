@@ -1,6 +1,7 @@
 # dnd
 
 #TODO
+Таб с генераторами Из бездны
 таб с генераторами TODO проверить локации
 время в игре: утро,день, вечер и ночь, глубокая ночь, под утро
 иконки для инициативы
@@ -15,6 +16,9 @@
 голосовой отклик
 Карты-проекты - у каждой карты свой набор конфигов\команд
 свет/тень
+
+https://bestprogrammer.ru/izuchenie/rukovodstvo-po-integratsii-api-google-tablits-v4
+https://developers.google.com/sheets/api/quickstart/js?hl=en#create_an_api_key
 <?php
 
 $url = "https://dnd.su/request/live_search/bestiary/classic/";

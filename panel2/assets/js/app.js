@@ -242,6 +242,8 @@ $(function() {
 			});
 		});
 
+		init.rating = $('.js-rating').val();
+
 		$.ajax({
 			url:'../api',
 			data:{

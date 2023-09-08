@@ -109,7 +109,6 @@
                 </ul>
                 <div class="tab-content py-3">
                     <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
-
                         <div class="row" style=" position: absolute;width: 90%">
                             <?php  $files = glob("../img/*.*");?>
                             <?php
@@ -242,6 +241,8 @@
                     </div>
                     <div class="tab-pane fade " id="primaryinit" role="tabpanel">
                         <?php $init=json_decode(file_get_contents('../init.json'),1);?>
+
+                        <label>Рейтинг преследования<input name="rating" class="js-rating" value="<?=$init['rating']?>"></label>
                         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
                             <div class="col">
                                 <div class="card radius-10 bg-primary bg-gradient">

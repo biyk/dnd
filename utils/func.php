@@ -93,8 +93,10 @@ if (!function_exists('pre'))
 
 
 function orderTry(&$init){
+
     usort($init['all'], function($a, $b) {
-        return $a['init'] - $b['init'];
+        if ($a['init'] && $b['init']) return $a['init'] - $b['init'];
+        return 0;
     });
 }
 
