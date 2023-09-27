@@ -1,37 +1,44 @@
 {
-    "round": "0",
+    "round": "8",
     "all": [
         {
-            "init": "",
+            "init": "20",
+            "name": "Сперктры",
+            "player": "true",
+            "surprise": "false"
+        },
+        {
+            "init": "15",
             "name": "Туман",
             "player": "true",
             "surprise": "false"
         },
         {
-            "init": "",
+            "init": "10",
             "name": "Тархун",
             "player": "true",
             "surprise": "false"
         },
         {
-            "init": "",
+            "init": "19.1",
             "name": "Лериса",
-            "player": "true",
-            "surprise": "true"
-        },
-        {
-            "init": "",
-            "name": "Колотушка",
             "player": "true",
             "surprise": "false"
         },
         {
-            "init": "",
+            "init": "7",
             "name": "Мехен",
-            "player": "true",
+            "player": "false",
+            "surprise": "false"
+        },
+        {
+            "init": "19",
+            "name": "Колотушка",
+            "player": "false",
             "surprise": "false"
         }
     ],
-    "try": "",
-    "rating": "1"
+    "try": "20",
+    "rating": "2",
+    "next": "19.1"
 }
