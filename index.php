@@ -7,7 +7,7 @@
 <body style="margin: 0px">
 <div class="container" style="z-index:100;"></div>
 <button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()"
-        style="position: fixed;z-index:1;font-size: 25px;"
+        style="position: fixed;z-index:14;font-size: 25px;"
 >▢</button>
 <span
         style="position: fixed;

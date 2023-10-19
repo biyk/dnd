@@ -3,5 +3,7 @@
     "режим разработчика": "startTimer",
     "режим игры": "startTimer",
     "обнови видео": "reloadVideo();",
+    "fullscreen": "toggleFullScreen();",
+    "обнови страницу": "location.reload(1);",
     "обнови карту": "reloadImage();"
 }

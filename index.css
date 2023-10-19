@@ -43,7 +43,7 @@
     position: fixed;
     right: 0px;
     top: 10px;
-    z-index: 1;
+    z-index: 13;
 }
 .rating-area:not(:checked) > input {
     display: none;
