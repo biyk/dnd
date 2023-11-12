@@ -260,7 +260,7 @@ function checkInit() {
 			if (round && _try){
 				let current = json.all.filter(e=>e.init==json.try)[0];
 				let next = json.all.filter(e=>e.init==json.next)[0];
-				$('.js-init').html('Раунд:'+json.round+'| Ход: '+current.name+'| Далее: '+next.name).show();
+				$('.js-init').html('Раунд:'+json.round+'| Ход: '+current.name+'| Далее: '+next?.name).show();
 			} else {
 				$('.js-init').hide();
 			}
@@ -268,6 +268,21 @@ function checkInit() {
         },
         error: function (xhr, textStatus, errorThrown) {
             console.error("Error loading config.php:", textStatus, errorThrown);
+        }
+    });
+}
+
+function checkTime() {
+    $.ajax({
+        url: '/dnd/api/?time=0&type=time',
+        dataType: "json",
+        success: function (json) {
+
+            console.log(json)
+            $('.now-time').text(json.currentDateTime);
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            //console.error("Error loading config.php:", textStatus, errorThrown);
         }
     });
 }
@@ -312,6 +327,7 @@ $(document).ready(function() {
     setInterval(checkConfig, 2000);
     setInterval(checkMap, 2000);
     setInterval(checkInit, 2000);
+    setInterval(checkTime, 2000);
 });
 
 

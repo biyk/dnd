@@ -106,6 +106,15 @@
                             </div>
                         </a>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link " data-bs-toggle="tab" href="#primarytime" role="tab" aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <div class="tab-icon"><i class="bx bx-microphone font-18 me-1"></i>
+                                </div>
+                                <div class="tab-title">Время</div>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
                 <div class="tab-content py-3">
                     <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
@@ -352,6 +361,9 @@
                     </div>
                     <div class="tab-pane fade " id="primarygen" role="tabpanel">
                         <?php include '../includes/primarygen.php'?>
+                    </div>
+                    <div class="tab-pane fade " id="primarytime" role="tabpanel">
+                        <?php include '../includes/primarytime.php'?>
                     </div>
                 </div>
             </div>

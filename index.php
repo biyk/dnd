@@ -40,7 +40,7 @@
 </div>
 
 <img src="image.png" id="image" style="width: 100%;top: -7%;display: block;position: relative;">
-<img src="image.png" id="demo" style="opacity:0;z-index:100;width: 30%;right: 0%;display: block;position: absolute;top: 0px;border: 3px solid red;">
+<img src="image.png" id="demo" style="opacity:0;z-index:12;width: 30%;right: 0%;display: block;position: absolute;top: 0px;border: 3px solid red;">
 <audio id="audio_player" src style="display:none;"></audio>
 
 <div id="player" style=""></div>
@@ -56,6 +56,14 @@
     <input type="radio" id="star-1" name="rating" value="1" checked>
     <label for="star-1" title="Оценка «1»"></label>
 </div>
+<div class="now-time" style="
+    position: fixed;
+    top: 43px;
+    z-index: 12;
+    right: 10px;
+    color: yellow;
+    background: black;
+"></div>
 <script>
     var videos = {};
     var yid = 'ncdK57339l0';
@@ -109,5 +117,57 @@
 </script>
 <script src="index.js?<?=time()?>"></script>
 <link rel="stylesheet" type="text/css" href="index.css?v=3.0.95">
+<canvas id="myCanvas" style="
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: none;
+"></canvas>
+<script>
+    // Получаем ссылку на элемент canvas и его контекст
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
 
+    // Загружаем изображение
+    const img = new Image();
+    img.src = 'image.png';
+
+    // Ожидаем полной загрузки изображения
+    img.onload = function() {
+        // Устанавливаем размеры холста равными размерам изображения
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        // Рисуем изображение на холсте
+        ctx.drawImage(img, 0, 0);
+
+        // Рисуем первый полупрозрачный круг поверх изображения
+        const centerX1 = canvas.width / 4;
+        const centerY1 = canvas.height / 4;
+        const radius1 = Math.min(centerX1, centerY1) * 0.8;
+
+        ctx.globalAlpha = 0.5; // Устанавливаем прозрачность
+        ctx.beginPath();
+        ctx.arc(centerX1, centerY1, radius1, 0, 2 * Math.PI);
+        ctx.lineWidth = 5;
+        ctx.strokeStyle = 'red';
+        ctx.stroke();
+
+        // Рисуем второй полупрозрачный круг поверх изображения
+        const centerX2 = canvas.width * 3 / 4;
+        const centerY2 = canvas.height * 3 / 4;
+        const radius2 = Math.min(centerX2, centerY2) * 0.8;
+
+        ctx.beginPath();
+        ctx.arc(centerX2, centerY2, radius2, 0, 2 * Math.PI);
+        ctx.strokeStyle = 'blue';
+        ctx.stroke();
+
+        ctx.globalAlpha = 1; // Сбрасываем прозрачность
+    }
+
+</script>
 </body>
