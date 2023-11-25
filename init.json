@@ -1,55 +1,44 @@
 {
-    "round": "4",
+    "round": "2",
     "all": [
         {
-            "init": "5",
-            "name": "Убийцы",
-            "player": "true",
-            "surprise": "false"
+            "init": "16",
+            "name": "Дерро",
+            "player": "false",
+            "surprise": "true"
         },
         {
-            "init": "13",
-            "name": "Торговец",
-            "player": "true",
-            "surprise": "false"
-        },
-        {
-            "init": "7",
+            "init": "14",
             "name": "Тархун",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "0.1",
+            "init": "11",
             "name": "Лериса",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "23",
+            "init": "8.1",
             "name": "Мехен",
             "player": "false",
-            "surprise": "false"
+            "surprise": "true"
         },
         {
-            "init": "3",
+            "init": "18",
             "name": "Колотушка",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "0",
-            "name": "Спектр",
-            "player": "false",
-            "surprise": "false"
-        },
-        {
-            "init": "14",
+            "init": "8",
             "name": "Туман",
             "player": "false",
             "surprise": "false"
         }
     ],
-    "try": "13",
-    "rating": "2"
+    "try": "18",
+    "rating": "3",
+    "next": "16"
 }
