@@ -260,7 +260,7 @@ function checkInit() {
 			if (round && _try){
 				let current = json.all.filter(e=>e.init==json.try)[0];
 				let next = json.all.filter(e=>e.init==json.next)[0];
-				$('.js-init').html('Раунд:'+json.round+'| Ход: '+current.name+'| Далее: '+next?.name).show();
+				$('.js-init').html('Раунд:'+json.round+'| Ход: '+current.name+'| Далее: '+next.name).show();
 			} else {
 				$('.js-init').hide();
 			}
