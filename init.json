@@ -1,44 +1,56 @@
 {
-    "round": "2",
+    "round": "7",
     "all": [
         {
-            "init": "16",
-            "name": "Дерро",
+            "init": "18",
+            "name": "Баппито",
             "player": "false",
-            "surprise": "true"
+            "surprise": "false"
         },
         {
-            "init": "14",
+            "init": "7",
             "name": "Тархун",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "11",
+            "init": "20",
             "name": "Лериса",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "8.1",
+            "init": "19.1",
             "name": "Мехен",
-            "player": "false",
-            "surprise": "true"
-        },
-        {
-            "init": "18",
-            "name": "Колотушка",
             "player": "false",
             "surprise": "false"
         },
         {
             "init": "8",
+            "name": "Колотушка",
+            "player": "false",
+            "surprise": "false"
+        },
+        {
+            "init": "19",
             "name": "Туман",
             "player": "false",
             "surprise": "false"
+        },
+        {
+            "init": "15",
+            "name": "Зомби",
+            "player": "false",
+            "surprise": "false"
+        },
+        {
+            "init": "11",
+            "name": "Скелеты",
+            "player": "false",
+            "surprise": "true"
         }
     ],
-    "try": "18",
+    "try": "19",
     "rating": "3",
-    "next": "16"
+    "next": "18"
 }
