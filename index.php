@@ -5,7 +5,10 @@
     <script src="//console.re/connector.js" data-channel="837a-33b5-63e7" id="consolerescript"></script>
     <script>
         console.re.log('remote log test');
-        console.re.log( window.navigator);
+        console.re.log( window.navigator.appCodeName);
+        console.re.log( window.navigator.appName);
+        console.re.log( window.navigator.appVersion);
+        console.re.log( window.navigator.userAgent);
     </script>
 </head>
 <body style="margin: 0px">
