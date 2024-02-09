@@ -9,6 +9,19 @@
 <button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()"
         style="position: fixed;z-index:14;font-size: 25px;"
 >▢</button>
+<button type="button" value="click to toggle fullscreen" onclick="$('.floating-buttons').toggle();"
+        style="position: fixed;z-index:14;font-size: 25px;top: 40px"
+>▢</button>
+<div class="floating-buttons">
+    <button class="up">▲</button>
+    <button class="down">▼</button>
+    <button class="left">◄</button>
+    <button class="right">►</button>
+    <button class="plus">+</button>
+    <button class="minus">-</button>
+    <button class="hash">#</button>
+</div>
+
 <span
         style="position: fixed;
     z-index: 1;
@@ -18,6 +31,7 @@
     top: 10px;"
         class="js-init"
 ></span>
+<div class="allhash" style=""></div>
 <div class="map-wrapper" style="position: relative">
     <?php
     $files = glob("img/*.*");

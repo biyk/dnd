@@ -328,7 +328,52 @@ $(document).ready(function() {
     setInterval(checkMap, 2000);
     setInterval(checkInit, 2000);
     setInterval(checkTime, 2000);
+
+
+
+    listenKeys();
 });
+
+function listenKeys() {
+
+    $('.floating-buttons button').on('click', function () {
+        let div = 50;
+        let $wrapper = $('.map-wrapper');
+        let css_top = parseInt($wrapper.css('top'));
+        let css_left = parseInt($wrapper.css('left'));
+        let scale = parseFloat($wrapper.css('scale')) || 1;
+        let $this = $(this);
+        if ($this.hasClass('left')) {
+            css_left+=div;
+            $wrapper.css({left:css_left});
+        }
+        if ($this.hasClass('up')) {
+            css_top -= div;
+            $wrapper.css({top:css_top})
+        }
+        if ($this.hasClass('down')) {
+            css_top+=div;
+            $wrapper.css({top:css_top})
+        }
+        if ($this.hasClass('right')) {
+            css_left-=div;
+            $wrapper.css({left:css_left})
+        }
+        if ($this.hasClass('plus')) {
+            scale+=0.1;
+            $wrapper.css({scale:scale.toString()})
+        }
+        if ($this.hasClass('minus')) {
+            scale-=0.1;
+            $wrapper.css({scale:scale.toString()})
+        }
+        if ($this.hasClass('hash')) {
+            $('.allhash').toggle();
+        }
+
+    });
+}
+
 
 
 function showAlert(num= 0) {
