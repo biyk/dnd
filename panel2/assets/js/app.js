@@ -440,3 +440,56 @@ let stopListen = function(){
 	// Начинаем слушать микрофон и распознавать голос
 	recognizer.abort();
 }
+
+
+$(document).ready(function() {
+	var dropArea = document.getElementById('drop-area');
+
+	// Предотвращаем стандартное поведение браузера при перетаскивании
+	['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+		dropArea.addEventListener(eventName, preventDefaults, false)
+	});
+
+	function preventDefaults (e) {
+		e.preventDefault()
+		e.stopPropagation()
+	}
+
+	// Обрабатываем перетаскивание файла
+	dropArea.addEventListener('drop', handleDrop, false)
+
+	function handleDrop(e) {
+		let dt = e.dataTransfer
+		let files = dt.files
+		console.log(e);
+		handleFiles(files)
+	}
+
+	// Обрабатываем выбранные файлы
+	function handleFiles(files) {
+		for (let i = 0; i < files.length; i++) {
+			let file = files[i]
+
+			// Проверяем, что выбранный файл - изображение
+			if (file.type.match('image.*')) {
+				let reader = new FileReader()
+
+				// Читаем файл как Data URL
+				reader.readAsDataURL(file)
+				reader.onload = function () {
+
+					let src = reader.result;
+					
+					$.ajax({
+						method: 'POST',
+						url: '../api/',
+						data:{
+							type:'demo',
+							src
+						}
+					});
+				}
+			}
+		}
+	}
+});

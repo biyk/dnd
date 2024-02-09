@@ -189,30 +189,11 @@
                     <div class="tab-pane fade " id="primarycontact" role="tabpanel">
                         <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2">
                             <div class="col">
-                                <h6 class="mb-0 text-uppercase">With controls</h6>
-                                <hr/>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
-                                            <div class="carousel-inner">
-                                                <?php  $files = glob("../demo/*.*");
-                                                $active = 1;
-                                                foreach ($files as $num=>$filename) {
-                                                    ?>
-                                                    <div class="carousel-item <?php if($active){$active=0;?>active<?php }?>">
-                                                        <img src="<?=$filename?>" class="d-block w-100" alt="...">
-                                                    </div>
-                                                <?php }?>
-                                            </div>
-                                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">	<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </a>
-                                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">	<span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div id="drop-area" style=" width: 300px;
+      height: 300px;
+      border: 2px dashed #ccc;
+      text-align: center;
+      line-height: 300px;">Перетащите изображение сюда</div>
                             </div>
                             <div class="col">
                                 <h6 class="mb-0 text-uppercase">With captions</h6>
