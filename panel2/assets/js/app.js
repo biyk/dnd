@@ -479,7 +479,7 @@ $(document).ready(function() {
 				reader.onload = function () {
 
 					let src = reader.result;
-					
+
 					$.ajax({
 						method: 'POST',
 						url: '../api/',
