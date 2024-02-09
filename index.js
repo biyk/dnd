@@ -341,7 +341,7 @@ function listenKeys() {
         let $wrapper = $('.map-wrapper');
         let css_top = parseInt($wrapper.css('top'));
         let css_left = parseInt($wrapper.css('left'));
-        let scale = parseMatrixTransform($wrapper.css('transform'))?.scaleX || 1;
+        let scale = parseMatrixTransform($wrapper.css('transform')) ? parseMatrixTransform($wrapper.css('transform')).scaleX : 1;
         let $this = $(this);
         if ($this.hasClass('left')) {
             css_left+=div;
