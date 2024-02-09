@@ -7,7 +7,7 @@
 <body style="margin: 0px">
 <div class="container" style="z-index:100;"></div>
 <button type="button" value="click to toggle fullscreen" onclick="toggleFullScreen()"
-        style="position: fixed;z-index:14;font-size: 25px;"
+        style="position: fixed;z-index:34;font-size: 25px;"
 >▢</button>
 <button type="button" value="click to toggle fullscreen" onclick="$('.floating-buttons').toggle();"
         style="position: fixed;z-index:14;font-size: 25px;top: 40px"
@@ -57,7 +57,7 @@
 <img src="image.png" id="demo" style="opacity:0;z-index:12;width: 30%;right: 0%;display: block;position: absolute;top: 0px;border: 3px solid red;">
 <audio id="audio_player" src style="display:none;"></audio>
 
-<div id="player" style=""></div>
+<div id="player" style="display:none;"></div>
 <div class="rating-area">
     <input type="radio" id="star-5" name="rating" value="5" >
     <label for="star-5" title="Оценка «5»"></label>
