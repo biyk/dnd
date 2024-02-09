@@ -252,9 +252,6 @@ function checkInit() {
         url: 'init.json' + '?' + Math.random(),
         dataType: "json",
         success: function (json) {
-
-            console.log(json)
-
 			let round = json.round;
 			let _try = json.try;
 			if (round && _try){
@@ -278,7 +275,6 @@ function checkTime() {
         dataType: "json",
         success: function (json) {
 
-            console.log(json)
             $('.now-time').text(json.currentDateTime);
         },
         error: function (xhr, textStatus, errorThrown) {
@@ -292,7 +288,6 @@ function checkMap() {
         url: 'map.json' + '?' + Math.random(),
         dataType: "json",
         success: function (json) {
-            //console.log(json);
 			$.each(json, function(chunk,e){
 				if (e=='true'){
 					$('#'+chunk).css('opacity',1);
@@ -334,7 +329,31 @@ $(document).ready(function() {
     listenKeys();
 });
 
+
+function loadMapPos(){
+    $.ajax({
+        url: 'map_position.json' + '?' + Math.random(),
+        dataType: "json",
+        success: function (json) {
+            console.log(json);
+            let {css_left, css_top,scale,hash} = json
+            $('.map-wrapper').css({
+                left:css_left,
+                top:css_top,
+                transform:'scale('+scale+')',
+            });
+            $('.allhash').toggle(hash=='true');
+
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.error("Error loading map.json:", textStatus, errorThrown);
+        }
+    });
+}
+
 function listenKeys() {
+
+    loadMapPos();
 
     $('.floating-buttons button').on('click', function () {
         let div = 50;
