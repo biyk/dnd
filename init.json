@@ -1,50 +1,44 @@
 {
-    "round": "9",
+    "round": "3",
     "all": [
         {
-            "init": "19.1",
+            "init": "1.1",
             "name": "Сарашана",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "13",
+            "init": "19.1",
             "name": "Трум",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "9",
+            "init": "10",
             "name": "Павва",
             "player": "false",
-            "surprise": "false"
+            "surprise": "true"
         },
         {
-            "init": "7",
+            "init": "2",
             "name": "литрикс",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "8",
-            "name": "Йестаборд",
+            "init": "6",
+            "name": "Кисель",
             "player": "false",
             "surprise": "false"
         },
         {
             "init": "19",
-            "name": "Взрослый миконид",
+            "name": "слизь",
             "player": "false",
-            "surprise": "false"
-        },
-        {
-            "init": "18",
-            "name": "Споровый слуга",
-            "player": "false",
-            "surprise": "false"
+            "surprise": "true"
         }
     ],
-    "try": "9",
+    "try": "10",
     "rating": "0",
-    "next": "8"
+    "next": "6"
 }
