@@ -3,6 +3,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <script src="//console.re/connector.js" data-channel="837a-33b5-63e7" id="consolerescript"></script>
+    <script>
+        console.re.log('remote log test');
+        console.re.log( window.navigator);
+    </script>
 </head>
 <body style="margin: 0px">
 <div class="container" style="z-index:100;"></div>
