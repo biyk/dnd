@@ -274,7 +274,7 @@ function checkInit() {
 
 function checkTime() {
     $.ajax({
-        url: '/dnd/api/?time=0&type=time',
+        url: 'api/?time=0&type=time',
         dataType: "json",
         success: function (json) {
 
@@ -370,6 +370,17 @@ function listenKeys() {
         if ($this.hasClass('hash')) {
             $('.allhash').toggle();
         }
+
+        $.ajax({
+            url:'api/',
+            data: {
+                scale,
+                css_top,
+                css_left,
+                hash:$('.allhash').is(':visible'),
+                type: 'map_position'
+            }
+        });
 
     });
 }

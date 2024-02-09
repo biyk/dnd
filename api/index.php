@@ -150,6 +150,10 @@ if ($type=='time'){
     die();
 }
 
+if ($type=='map_position'){
+    saveJson('../map_position.json', $_REQUEST);
+}
+
 
  // If the config array is not empty, write it to the config.json file
 if ($config) file_put_contents('../config.json', json_encode($config));
