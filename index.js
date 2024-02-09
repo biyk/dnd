@@ -341,7 +341,7 @@ function listenKeys() {
         let $wrapper = $('.map-wrapper');
         let css_top = parseInt($wrapper.css('top'));
         let css_left = parseInt($wrapper.css('left'));
-        let scale = parseFloat($wrapper.css('scale')) || 1;
+        let scale = parseMatrixTransform($wrapper.css('transform'))?.scaleX || 1;
         let $this = $(this);
         if ($this.hasClass('left')) {
             css_left+=div;
@@ -361,11 +361,11 @@ function listenKeys() {
         }
         if ($this.hasClass('plus')) {
             scale+=0.1;
-            $wrapper.css({scale:scale.toString()})
+            $wrapper.css({transform:'scale('+scale+')'})
         }
         if ($this.hasClass('minus')) {
             scale-=0.1;
-            $wrapper.css({scale:scale.toString()})
+            $wrapper.css({transform:'scale('+scale+')'})
         }
         if ($this.hasClass('hash')) {
             $('.allhash').toggle();
@@ -374,6 +374,24 @@ function listenKeys() {
     });
 }
 
+
+function parseMatrixTransform(matrixValue) {
+    // Разбиваем строку на массив чисел, используя регулярное выражение
+    var matches = matrixValue.match(/^matrix\((.+)\)$/);
+    if (matches) {
+        // Разбиваем полученные числа по запятой и удаляем лишние пробелы
+        var nums = matches[1].split(',').map(function(num) {
+            return parseFloat(num.trim());
+        });
+        // Возвращаем объект с коэффициентами масштабирования по осям X и Y
+        return {
+            scaleX: nums[0],
+            scaleY: nums[3]
+        };
+    } else {
+        return null; // Возвращаем null, если строка не соответствует ожидаемому формату
+    }
+}
 
 
 function showAlert(num= 0) {
