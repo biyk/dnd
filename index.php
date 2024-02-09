@@ -10,8 +10,8 @@
         style="position: fixed;z-index:34;font-size: 25px;"
 >▢</button>
 <button type="button" value="click to toggle fullscreen" onclick="$('.floating-buttons').toggle();"
-        style="position: fixed;z-index:14;font-size: 25px;top: 40px"
->▢</button>
+        style="position: fixed;z-index:14;font-size: 18px;top: 40px"
+>⚙️</button>
 <div class="floating-buttons">
     <button class="up">▲</button>
     <button class="down">▼</button>
@@ -24,7 +24,7 @@
 
 <span
         style="position: fixed;
-    z-index: 1;
+    z-index: 2;
     font-size: 18px;
     left: 39px;
     color: chartreuse;
