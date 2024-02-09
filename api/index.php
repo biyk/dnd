@@ -104,7 +104,7 @@ if ($type=='time'){
         //pre(date("Y-m-d H:i:s", $currentTime-62167230732));
         $time-=$minutesToAdd/60;
         // Иначе, в цикле добавляем по одному часу и вычитаем его из общей суммы, пока целые часы не закончатся
-        while ($time > 0) {
+        while ($time >= 0) {
             // Вычисляем количество и типы событий, произошедших между старой и новой метками времени
             if (isset($timeData['events']['h'])) {
                 $hourlyEvents = $timeData['events']['h'];
