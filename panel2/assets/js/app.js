@@ -384,6 +384,18 @@ $(function() {
 		})
 	});
 
+
+	$('.js-select-map').on('change', function () {
+		let map = $(this).val();
+		$.ajax({
+			url: '../api',
+			data:{
+				type:'settings',
+				map
+			}
+		});
+	});
+
 });
 
 // Создаем распознаватель

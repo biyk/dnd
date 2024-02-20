@@ -150,3 +150,16 @@ function selectCommand($data){
 function saveJson($file, $array){
     return file_put_contents($file, json_encode($array,JSON_PRETTY_PRINT + JSON_UNESCAPED_UNICODE));
 }
+
+function getSettings($key=null)
+{
+    $settings = json_decode(file_get_contents('../json/settings.json'),1);
+
+    return $key?$settings[$key]:$settings;
+}
+function setSettings($key,$value)
+{
+    $settings = json_decode(file_get_contents('../json/settings.json'),1);
+    $settings[$key] = $value;
+    file_put_contents('../json/settings.json',json_encode($settings));
+}

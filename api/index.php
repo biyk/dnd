@@ -11,13 +11,14 @@ $locales = empty($_REQUEST['text'])?[]:explode(' ', $_REQUEST['text']);
  // Initialize the config array
 $config = [];
 
-$path = '../videos.json';
+$path = '../json/videos.json';
  // Get the contents of the videos.json file and decode the JSON into an array
 $json_v = json_decode(file_get_contents($path), 1);
 
-$json_command = json_decode(file_get_contents('../commands.json'), 1);
-$image_command = json_decode(file_get_contents('../images.json'), 1);
-$json_map = json_decode(file_get_contents('../map.json'), 1);
+$json_command = json_decode(file_get_contents('../json/commands.json'), 1);
+$image_command = json_decode(file_get_contents('../json/images.json'), 1);
+$map = getSettings('map');
+$json_map = json_decode(file_get_contents('../json/'.$map.'/map.json'), 1);
 if ($type=='locale'){
      // Loop through each phrase and command in the commands.json file
    	foreach ($json_command as $phrase=>$command){
@@ -45,7 +46,8 @@ if ($type=='locale'){
 
 if ($type=='map'){
 	$json_map[$_REQUEST['chunk']] = $_REQUEST['checked'];
-	file_put_contents('../map.json', json_encode($json_map,JSON_PRETTY_PRINT));
+    $map = getSettings('map');
+	file_put_contents('../json/'.$map.'/map.json', json_encode($json_map,JSON_PRETTY_PRINT));
 }
 
 if ($type=='demo'){
@@ -60,19 +62,21 @@ if ($type=='videos'){
         if ($key) $json_v[$video] = $key;
         else unset($json_v[$video]);
     }
-    file_put_contents('../videos.json', json_encode($json_v,JSON_PRETTY_PRINT));
+    file_put_contents('../json/videos.json', json_encode($json_v,JSON_PRETTY_PRINT));
 }
 
 
 if ($type=='init'){
     $init = $_REQUEST['init'];
     var_dump($init);
-    saveJson('../init.json', $init);
+    $map = getSettings('map');
+    saveJson('/json/'.$map.'/init.json', $init);
 }
 
 if ($type=='time'){
     // Загружаем данные из файла time.json
-    $data = file_get_contents("../time.json");
+    $map = getSettings('map');
+    $data = file_get_contents("/json/$map/time.json");
     $timeData = json_decode($data, true);
     //pre($timeData);
     // Получаем текущую метку времени из файла
@@ -142,7 +146,8 @@ if ($type=='time'){
 
     if($timeData['time'] != $currentTime){
         $timeData['time'] = $currentTime;
-        saveJson('../time.json', $timeData);
+        $map = getSettings('map');
+        saveJson('/json/'.$map.'/time.json', $timeData);
     }
 
     echo json_encode($result);
@@ -151,7 +156,17 @@ if ($type=='time'){
 }
 
 if ($type=='map_position'){
-    saveJson('../map_position.json', $_REQUEST);
+    $map = getSettings('map');
+    saveJson('/json/'.$map.'/map_position.json', $_REQUEST);
+}
+
+if ($type=='settings'){
+    $settings = getSettings();
+    foreach ($settings as $key=>$val){
+        if ($_REQUEST[$key]) {
+            setSettings($key,$_REQUEST[$key]);
+        }
+    }
 }
 
 
