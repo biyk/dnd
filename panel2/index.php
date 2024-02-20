@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="assets/css/semi-dark.css" />
     <link rel="stylesheet" href="assets/css/header-colors.css" />
     <title>Dashtrans - Bootstrap5 Admin Template</title>
-    <script>var init = <?=file_get_contents('../init.json')?></script>
+    <script>var init = <?=file_get_contents('../json/'.getSettings('map').'/init.json')?></script>
 </head>
 
 <body class="bg-theme bg-theme2">
@@ -39,7 +39,25 @@
     <!--start page wrapper -->
     <div class="page-wrapper">
         <div class="page-content">
+            <label class="form-label">Выбор карты</label>
+            <?php
+            $dir = '../json';
+            $subfolders = array_diff(scandir($dir), array('..', '.'));
 
+
+            ?>
+            <select class="single-select js-select-map">
+                <?
+                foreach($subfolders as $subfolder) {
+                    if(is_dir($dir . '/' . $subfolder)) {
+                        $selected  = getSettings('map')==$subfolder
+                       ?>
+                        <option <?=$selected?'selected':''?> value="<?=$subfolder?>"><?=$subfolder?></option>
+                        <?
+                    }
+                }
+                ?>
+            </select>
             <div class="row">
                 <div class="col col-lg-9 mx-auto">
                     <div class="card">
@@ -121,7 +139,7 @@
                         <div class="row" style=" position: absolute;width: 90%">
                             <?php  $files = glob("../img/*.*");?>
                             <?php
-                            $map = json_decode(file_get_contents('../map.json'),1);
+                            $map = json_decode(file_get_contents('../json/'.getSettings('map').'/map.json'),1);
                             foreach ($files as $num=>$filename) {
                                 $temp = explode('/',$filename);
                                 $id = md5(end($temp));
@@ -158,7 +176,7 @@
                     <div class="tab-pane fade" id="primaryprofile" role="tabpanel">
                         <div class="card-body">
                             <?php
-                            $videos = json_decode(file_get_contents('../videos.json'));
+                            $videos = json_decode(file_get_contents('/json/videos.json'));
                             foreach ($videos as $video=>$key){?>
                                 <div class="form-check js_video">
                                     <input class="form-check-input" type="radio" name="selectVideo" >
@@ -203,7 +221,7 @@
                                         <div id="carouselExampleCaptions" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
                                             <div class="carousel-inner">
                                                 <?php
-                                                $images = json_decode(file_get_contents('../images.json'),1);
+                                                $images = json_decode(file_get_contents('../json/images.json'),1);
                                                 $active = 1;
                                                 foreach ($images as $name=>$image) {
                                                     ?>
@@ -230,7 +248,7 @@
                         </div>
                     </div>
                     <div class="tab-pane fade " id="primaryinit" role="tabpanel">
-                        <?php $init=json_decode(file_get_contents('../init.json'),1);?>
+                        <?php $init=json_decode(file_get_contents('../json/'.getSettings('map').'/init.json'),1);?>
 
                         <label>Рейтинг преследования<input name="rating" class="js-rating" value="<?=$init['rating']?>"></label>
                         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">

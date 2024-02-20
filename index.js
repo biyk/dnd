@@ -33,7 +33,7 @@ let developMode = ()=>{
 }
 let reloadVideo = ()=>{
     $.ajax({
-        url:'videos.json'+'?'+Math.random(),
+        url:'json/videos.json'+'?'+Math.random(),
         dataType : "json",
         success: function(json){
             videos = json;
@@ -249,7 +249,7 @@ function checkConfig() {
 
 function checkInit() {
     $.ajax({
-        url: 'init.json' + '?' + Math.random(),
+        url: 'api/json.php?file=init.json' + '&' + Math.random(),
         dataType: "json",
         success: function (json) {
 			let round = json.round;
@@ -285,7 +285,7 @@ function checkTime() {
 
 function checkMap() {
     $.ajax({
-        url: 'map.json' + '?' + Math.random(),
+        url: 'api/json.php?file=map.json' + '&' + Math.random(),
         dataType: "json",
         success: function (json) {
 			$.each(json, function(chunk,e){
@@ -332,7 +332,7 @@ $(document).ready(function() {
 
 function loadMapPos(){
     $.ajax({
-        url: 'map_position.json' + '?' + Math.random(),
+        url: 'api/json.php?file=map_position.json' + '&' + Math.random(),
         dataType: "json",
         success: function (json) {
             console.log(json);
@@ -367,11 +367,11 @@ function listenKeys() {
             $wrapper.css({left:css_left});
         }
         if ($this.hasClass('up')) {
-            css_top -= div;
+            css_top += div;
             $wrapper.css({top:css_top})
         }
         if ($this.hasClass('down')) {
-            css_top+=div;
+            css_top-=div;
             $wrapper.css({top:css_top})
         }
         if ($this.hasClass('right')) {
