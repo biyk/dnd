@@ -176,7 +176,7 @@
                     <div class="tab-pane fade" id="primaryprofile" role="tabpanel">
                         <div class="card-body">
                             <?php
-                            $videos = json_decode(file_get_contents('/json/videos.json'));
+                            $videos = json_decode(file_get_contents('../json/videos.json'));
                             foreach ($videos as $video=>$key){?>
                                 <div class="form-check js_video">
                                     <input class="form-check-input" type="radio" name="selectVideo" >
