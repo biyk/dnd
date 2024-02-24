@@ -335,7 +335,7 @@ function loadMapPos(){
         url: 'api/json.php?file=map_position.json' + '&' + Math.random(),
         dataType: "json",
         success: function (json) {
-            console.log(json);
+            //console.log(json);
             let {css_left, css_top,scale,hash} = json
             $('.map-wrapper').css({
                 left:css_left,
