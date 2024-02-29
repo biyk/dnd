@@ -312,10 +312,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="input-group">
-                                    <span class="input-group-text">Sur</span>
-                                    <span class="input-group-text">Pl</span>
-                                    <input type="text" value="Init" aria-label="First" class="form-control" style="max-width: 61px;" disabled readonly>
+                                    <span class="input-group-text"  style="width: 42px;">Sur</span>
+                                    <input type="text" value="Init" aria-label="First" class="form-control" style="max-width: 60px;" disabled readonly>
                                     <input type="text" value="Имя" aria-label="Last" class="form-control" disabled readonly>
+                                    <input type="text" value="КД" aria-label="Last" class="form-control" disabled readonly>
+                                    <input type="text" value="HP(max)" aria-label="Last" class="form-control" disabled readonly>
+                                    <input type="text" value="HP(now)" aria-label="Last" class="form-control" disabled readonly>
+                                    <button type="button" class="btn btn-light js-remove-line"><i class="lni lni-trash"></i></i></button>
                                 </div>
                                 <?php foreach ($init['all'] as $player){?>
                                     <div class="input-group js-init-row
@@ -326,24 +329,14 @@
                                                next
                                     <?php }?>
                                        " >
-                                        <div class="input-group-text">
+                                        <div class="input-group-text" style="width: 42px">
                                             <input <?=(!empty($player['surprise']) && $player['surprise']=='true')?'checked':''?> class="form-check-input js-row-surprise" type="checkbox" value="" aria-label="Checkbox for following text input">
                                         </div>
-                                        <div class="input-group-text">
-                                            <input <?=($player['player']=='true')?'checked':''?> class="form-check-input js-row-player" type="checkbox" value="" aria-label="Checkbox for following text input">
-                                        </div>
-                                        <input type="text" aria-label="First" class="form-control  js-row-init" value="<?=$player['init']?>" style="max-width: 61px;">
+                                        <input type="text" aria-label="First" class="form-control js-row-init" value="<?=$player['init']?>" style="max-width: 60px;">
                                         <input type="text" aria-label="Last" class="form-control js-row-name" value="<?=$player['name']?>">
-                                        <button type="button" class="btn btn-light">ICON</button>
-                                        <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu dropdown-menu-end" style="margin: 0px; display: none">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                            <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                        </ul>
+                                        <input type="text" aria-label="Last" class="form-control js-row-cd" value="<?=$player['cd']?>">
+                                        <input type="text" aria-label="Last" class="form-control js-row-hp_max" value="<?=$player['hp_max']?>">
+                                        <input type="text" aria-label="Last" class="form-control js-row-hp_now" value="<?=$player['hp_max']?>">
                                         <button type="button" class="btn btn-light js-remove-line"><i class="lni lni-trash"></i></i></button>
                                     </div>
                                 <?php } ?>

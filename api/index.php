@@ -70,7 +70,7 @@ if ($type=='init'){
     $init = $_REQUEST['init'];
     var_dump($init);
     $map = getSettings('map');
-    saveJson('/json/'.$map.'/init.json', $init);
+    saveJson('../json/'.$map.'/init.json', $init);
 }
 
 if ($type=='time'){
