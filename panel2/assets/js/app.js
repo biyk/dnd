@@ -383,6 +383,7 @@ $(function() {
 				console.log(
 					$ta.css('height', $ta[0].scrollHeight)
 				)
+
 			}
 		})
 	});
@@ -395,6 +396,9 @@ $(function() {
 			data:{
 				type:'settings',
 				map
+			},
+			success:()=>{
+				location.reload(1);
 			}
 		});
 	});

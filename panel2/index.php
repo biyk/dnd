@@ -137,7 +137,9 @@
                 <div class="tab-content py-3">
                     <div class="tab-pane fade active show" id="primaryhome" role="tabpanel">
                         <div class="row" style=" position: absolute;width: 90%">
-                            <?php  $files = glob("../img/*.*");?>
+                            <?php
+                            $_map = getSettings('map');
+                            $files = glob("../img/$_map/*.*");?>
                             <?php
                             $map = json_decode(file_get_contents('../json/'.getSettings('map').'/map.json'),1);
                             foreach ($files as $num=>$filename) {

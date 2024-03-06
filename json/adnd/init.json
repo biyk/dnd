@@ -1,0 +1,62 @@
+{
+    "round": "6",
+    "all": [
+        {
+            "init": "1",
+            "name": "Сарашана",
+            "player": "false",
+            "surprise": "false",
+            "cd": "15",
+            "hp_max": "50",
+            "hp_now": "50"
+        },
+        {
+            "init": "3",
+            "name": "Трум",
+            "player": "false",
+            "surprise": "false",
+            "cd": "14",
+            "hp_max": "50",
+            "hp_now": "20"
+        },
+        {
+            "init": "2",
+            "name": "Павва",
+            "player": "false",
+            "surprise": "false",
+            "cd": "13",
+            "hp_max": "50",
+            "hp_now": "20"
+        },
+        {
+            "init": "4",
+            "name": "литрикс",
+            "player": "false",
+            "surprise": "false",
+            "cd": "12",
+            "hp_max": "50",
+            "hp_now": "20"
+        },
+        {
+            "init": "5",
+            "name": "Кисель",
+            "player": "false",
+            "surprise": "false",
+            "cd": "11",
+            "hp_max": "40",
+            "hp_now": "20"
+        },
+        {
+            "init": "6",
+            "name": "слизь",
+            "player": "false",
+            "surprise": "false",
+            "cd": "11",
+            "hp_max": "40",
+            "hp_now": "20"
+        }
+    ],
+    "try": "2",
+    "rating": "3",
+    "next": "1"
+}
