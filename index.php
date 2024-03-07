@@ -41,7 +41,9 @@
 <div class="allhash" style=""></div>
 <div class="map-wrapper" style="position: relative">
     <?php
-    $files = glob("img/*.*");
+    include_once 'utils/func.php';
+    $map = getSettings('map');
+    $files = glob("img/$map/*.*");
     foreach ($files as $num=>$filename) {
 		$temp = explode('/',$filename);
 		$id = md5(end($temp));

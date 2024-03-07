@@ -257,6 +257,11 @@ function checkInit() {
 			if (round && _try){
 				let current = json.all.filter(e=>e.init==json.try)[0];
 				let next = json.all.filter(e=>e.init==json.next)[0];
+
+                if (current.hp_now/current.hp_max <= 0.5)  current.name+='<span style="color: red">&#127778;</span>';
+
+                if (next.hp_now/next.hp_max <= 0.5)  next.name+='<span style="color: red">&#127778;</span>'
+
 				$('.js-init').html('Раунд:'+json.round+'| Ход: '+current.name+'| Далее: '+next.name).show();
 			} else {
 				$('.js-init').hide();

@@ -153,7 +153,8 @@ function saveJson($file, $array){
 
 function getSettings($key=null)
 {
-    $settings = json_decode(file_get_contents('../json/settings.json'),1);
+    $dir = realpath(__DIR__.'/../json') ;
+    $settings = json_decode(file_get_contents($dir.'/settings.json'),1);
 
     return $key?$settings[$key]:$settings;
 }

@@ -239,6 +239,9 @@ $(function() {
 				name: $this.find('.js-row-name').val(),
 				player: $this.find('.js-row-player').is(':checked'),
 				surprise: $this.find('.js-row-surprise').is(':checked'),
+				cd: $this.find('.js-row-cd').val(),
+				hp_max: $this.find('.js-row-hp_max').val(),
+				hp_now: $this.find('.js-row-hp_now').val(),
 			});
 		});
 
@@ -380,6 +383,7 @@ $(function() {
 				console.log(
 					$ta.css('height', $ta[0].scrollHeight)
 				)
+
 			}
 		})
 	});
@@ -392,6 +396,9 @@ $(function() {
 			data:{
 				type:'settings',
 				map
+			},
+			success:()=>{
+				location.reload(1);
 			}
 		});
 	});

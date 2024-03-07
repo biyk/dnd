@@ -76,7 +76,8 @@ if ($type=='init'){
 if ($type=='time'){
     // Загружаем данные из файла time.json
     $map = getSettings('map');
-    $data = file_get_contents("../json/$map/time.json");
+    $dir = realpath(__DIR__.'/../json') ;
+    $data = file_get_contents($dir."/$map/time.json");
     $timeData = json_decode($data, true);
     //pre($timeData);
     // Получаем текущую метку времени из файла
@@ -147,7 +148,7 @@ if ($type=='time'){
     if($timeData['time'] != $currentTime){
         $timeData['time'] = $currentTime;
         $map = getSettings('map');
-        saveJson('../json/'.$map.'/time.json', $timeData);
+        saveJson('/json/'.$map.'/time.json', $timeData);
     }
 
     echo json_encode($result);
