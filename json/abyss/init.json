@@ -1,44 +1,26 @@
 {
-    "round": "0",
+    "round": "2",
     "all": [
         {
-            "init": "1.3",
-            "name": "Сарашана",
+            "init": "15",
+            "name": "мэй мэй",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "1.2",
-            "name": "Трум",
+            "init": "17",
+            "name": "леман рус",
             "player": "false",
             "surprise": "false"
         },
         {
-            "init": "1.1",
-            "name": "Павва",
-            "player": "false",
-            "surprise": "false"
-        },
-        {
-            "init": "8",
-            "name": "литрикс",
-            "player": "false",
-            "surprise": "false"
-        },
-        {
-            "init": "1",
-            "name": "Кисель",
-            "player": "false",
-            "surprise": "false"
-        },
-        {
-            "init": "5",
-            "name": "слизь",
+            "init": "14",
+            "name": "остальные",
             "player": "false",
             "surprise": "false"
         }
     ],
-    "try": "8",
-    "rating": "0",
-    "next": "5"
+    "try": "17",
+    "rating": "1",
+    "next": "15"
 }
