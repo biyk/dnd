@@ -1,62 +1,71 @@
 {
-    "round": "6",
+    "round": "0",
     "all": [
         {
-            "init": "1",
-            "name": "Сарашана",
-            "player": "false",
-            "surprise": "false",
-            "cd": "15",
-            "hp_max": "50",
-            "hp_now": "50"
-        },
-        {
-            "init": "3",
-            "name": "Трум",
-            "player": "false",
-            "surprise": "false",
-            "cd": "14",
-            "hp_max": "50",
-            "hp_now": "20"
-        },
-        {
-            "init": "2",
-            "name": "Павва",
-            "player": "false",
-            "surprise": "false",
-            "cd": "13",
-            "hp_max": "50",
-            "hp_now": "20"
-        },
-        {
-            "init": "4",
-            "name": "литрикс",
+            "init": "20",
+            "name": "Борис",
             "player": "false",
             "surprise": "false",
             "cd": "12",
-            "hp_max": "50",
-            "hp_now": "20"
+            "hp_max": "17",
+            "hp_now": "17"
         },
         {
-            "init": "5",
-            "name": "Кисель",
+            "init": "4",
+            "name": "Юитиро",
             "player": "false",
             "surprise": "false",
-            "cd": "11",
-            "hp_max": "40",
-            "hp_now": "20"
+            "cd": "16",
+            "hp_max": "17",
+            "hp_now": "17"
         },
         {
             "init": "6",
-            "name": "слизь",
+            "name": "молоко",
+            "player": "false",
+            "surprise": "false",
+            "cd": "14",
+            "hp_max": "10",
+            "hp_now": "10"
+        },
+        {
+            "init": "16",
+            "name": "мэймэй",
+            "player": "false",
+            "surprise": "false",
+            "cd": "13",
+            "hp_max": "15",
+            "hp_now": "15"
+        },
+        {
+            "init": "11",
+            "name": "Леман рус",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "18",
+            "hp_now": "18"
+        },
+        {
+            "init": "5.1",
+            "name": "упырь 4 ",
             "player": "false",
             "surprise": "false",
             "cd": "11",
-            "hp_max": "40",
-            "hp_now": "20"
+            "hp_max": "22",
+            "hp_now": "22"
+        },
+        {
+            "init": "5",
+            "name": "упырь 6",
+            "player": "false",
+            "surprise": "false",
+            "cd": "11",
+            "hp_max": "22",
+            "hp_now": "22"
         }
     ],
-    "try": "2",
+    "try": "20",
     "rating": "3",
-    "next": "1"
+    "next": "16"
 }

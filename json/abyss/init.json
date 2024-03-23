@@ -1,62 +1,53 @@
 {
-    "round": "5",
+    "round": "3",
     "all": [
         {
-            "init": "1",
-            "name": "Сарашана",
+            "init": "19",
+            "name": "Сарашана (*)",
             "player": "false",
             "surprise": "false",
             "cd": "15",
-            "hp_max": "50",
-            "hp_now": "24"
+            "hp_max": "42",
+            "hp_now": "42"
         },
         {
-            "init": "3",
+            "init": "17",
             "name": "Трум",
             "player": "false",
             "surprise": "false",
-            "cd": "14",
-            "hp_max": "50",
-            "hp_now": "24"
+            "cd": "17",
+            "hp_max": "57",
+            "hp_now": "50"
         },
         {
-            "init": "2",
+            "init": "14.2",
             "name": "Павва",
             "player": "false",
             "surprise": "false",
-            "cd": "13",
-            "hp_max": "50",
-            "hp_now": "24"
+            "cd": "18",
+            "hp_max": "62",
+            "hp_now": "62"
         },
         {
-            "init": "4",
+            "init": "20",
             "name": "литрикс",
             "player": "false",
             "surprise": "false",
-            "cd": "12",
-            "hp_max": "50",
-            "hp_now": "33"
-        },
-        {
-            "init": "5",
-            "name": "Кисель",
-            "player": "false",
-            "surprise": "false",
-            "cd": "11",
-            "hp_max": "40",
-            "hp_now": "25"
+            "cd": "20",
+            "hp_max": "58",
+            "hp_now": "58"
         },
         {
             "init": "6",
-            "name": "слизь",
+            "name": "Кисель",
             "player": "false",
             "surprise": "false",
-            "cd": "11",
-            "hp_max": "40",
-            "hp_now": "25"
+            "cd": "18",
+            "hp_max": "64",
+            "hp_now": "64"
         }
     ],
-    "try": "4",
-    "rating": "0",
-    "next": "3"
+    "try": "14.2",
+    "rating": "2",
+    "next": "14.1"
 }
