@@ -1,17 +1,17 @@
 {
-    "round": "0",
+    "round": "6",
     "all": [
         {
-            "init": "20",
+            "init": "13",
             "name": "Борис",
             "player": "false",
             "surprise": "false",
             "cd": "12",
             "hp_max": "17",
-            "hp_now": "17"
+            "hp_now": "11"
         },
         {
-            "init": "4",
+            "init": "23",
             "name": "Юитиро",
             "player": "false",
             "surprise": "false",
@@ -21,7 +21,34 @@
         },
         {
             "init": "6",
-            "name": "молоко",
+            "name": "мурмур",
+            "player": "false",
+            "surprise": "false",
+            "cd": "14",
+            "hp_max": "10",
+            "hp_now": "9"
+        },
+        {
+            "init": "19",
+            "name": "мэй мэй",
+            "player": "false",
+            "surprise": "false",
+            "cd": "13",
+            "hp_max": "15",
+            "hp_now": "7"
+        },
+        {
+            "init": "17",
+            "name": "Иксас",
+            "player": "false",
+            "surprise": "false",
+            "cd": "13",
+            "hp_max": "33",
+            "hp_now": "33"
+        },
+        {
+            "init": "4",
+            "name": "Стражник",
             "player": "false",
             "surprise": "false",
             "cd": "14",
@@ -29,43 +56,43 @@
             "hp_now": "10"
         },
         {
+            "init": "7",
+            "name": "кобольд",
+            "player": "false",
+            "surprise": "false",
+            "cd": "14",
+            "hp_max": "10",
+            "hp_now": "10"
+        },
+        {
+            "init": "16.1",
+            "name": "капитан",
+            "player": "false",
+            "surprise": "false",
+            "cd": "17",
+            "hp_max": "58",
+            "hp_now": "48"
+        },
+        {
             "init": "16",
-            "name": "мэймэй",
+            "name": "пират",
             "player": "false",
             "surprise": "false",
-            "cd": "13",
-            "hp_max": "15",
-            "hp_now": "15"
+            "cd": "12",
+            "hp_max": "11",
+            "hp_now": "11"
         },
         {
-            "init": "11",
-            "name": "Леман рус",
+            "init": "1",
+            "name": "конец раунда",
             "player": "false",
             "surprise": "false",
-            "cd": "16",
-            "hp_max": "18",
-            "hp_now": "18"
-        },
-        {
-            "init": "5.1",
-            "name": "упырь 4 ",
-            "player": "false",
-            "surprise": "false",
-            "cd": "11",
-            "hp_max": "22",
-            "hp_now": "22"
-        },
-        {
-            "init": "5",
-            "name": "упырь 6",
-            "player": "false",
-            "surprise": "false",
-            "cd": "11",
-            "hp_max": "22",
-            "hp_now": "22"
+            "cd": "14",
+            "hp_max": "10",
+            "hp_now": "10"
         }
     ],
-    "try": "20",
+    "try": "17",
     "rating": "3",
-    "next": "16"
+    "next": "16.1"
 }
