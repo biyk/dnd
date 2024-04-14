@@ -148,7 +148,7 @@ if ($type=='time'){
     if($timeData['time'] != $currentTime){
         $timeData['time'] = $currentTime;
         $map = getSettings('map');
-        saveJson($dir.'/'.$map.'/time.json', $timeData);
+        saveJson('../json/'.$map.'/time.json', $timeData);
     }
 
     echo json_encode($result);
