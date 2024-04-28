@@ -1,62 +1,35 @@
 {
-    "round": "15",
+    "round": "14",
     "all": [
         {
-            "init": "23",
-            "name": "Сарашана",
-            "player": "false",
-            "surprise": "false",
-            "cd": "15",
-            "hp_max": "47",
-            "hp_now": "31"
-        },
-        {
-            "init": "4.1",
+            "init": "9",
             "name": "Трум",
             "player": "false",
             "surprise": "false",
-            "cd": "16",
+            "cd": "12",
             "hp_max": "57",
-            "hp_now": "0"
-        },
-        {
-            "init": "4",
-            "name": "Глаббагул ",
-            "player": "false",
-            "surprise": "false",
-            "cd": "8",
-            "hp_max": "85",
-            "hp_now": "67"
-        },
-        {
-            "init": "14",
-            "name": "литрикс",
-            "player": "false",
-            "surprise": "false",
-            "cd": "20",
-            "hp_max": "57",
-            "hp_now": "58"
-        },
-        {
-            "init": "12.1",
-            "name": "элементаль",
-            "player": "false",
-            "surprise": "false",
-            "cd": "17",
-            "hp_max": "128",
-            "hp_now": "26"
+            "hp_now": "57"
         },
         {
             "init": "3",
-            "name": "король пуддингов",
+            "name": "Кисель",
             "player": "false",
             "surprise": "false",
-            "cd": "16",
-            "hp_max": "49",
-            "hp_now": "2"
+            "cd": "17",
+            "hp_max": "64",
+            "hp_now": "64"
+        },
+        {
+            "init": "1",
+            "name": "Пуддинг",
+            "player": "false",
+            "surprise": "false",
+            "cd": "17",
+            "hp_max": "112",
+            "hp_now": "96"
         }
     ],
-    "try": "14",
+    "try": "3",
     "rating": "3",
-    "next": "12.1"
+    "next": "1"
 }
