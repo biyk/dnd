@@ -1,18 +1,9 @@
 {
-    "round": "6",
+    "round": "3",
     "all": [
         {
-            "init": "13",
-            "name": "Борис",
-            "player": "false",
-            "surprise": "false",
-            "cd": "12",
-            "hp_max": "17",
-            "hp_now": "11"
-        },
-        {
-            "init": "23",
-            "name": "Юитиро",
+            "init": "22",
+            "name": "юитиро",
             "player": "false",
             "surprise": "false",
             "cd": "16",
@@ -20,79 +11,61 @@
             "hp_now": "17"
         },
         {
-            "init": "6",
+            "init": "21",
             "name": "мурмур",
             "player": "false",
             "surprise": "false",
-            "cd": "14",
-            "hp_max": "10",
-            "hp_now": "9"
+            "cd": "16",
+            "hp_max": "21",
+            "hp_now": "21"
         },
         {
-            "init": "19",
-            "name": "мэй мэй",
+            "init": "6",
+            "name": "зена",
             "player": "false",
             "surprise": "false",
-            "cd": "13",
-            "hp_max": "15",
-            "hp_now": "7"
+            "cd": "18",
+            "hp_max": "12",
+            "hp_now": "12"
         },
         {
-            "init": "17",
-            "name": "Иксас",
+            "init": "18",
+            "name": "Кола",
             "player": "false",
             "surprise": "false",
-            "cd": "13",
-            "hp_max": "33",
-            "hp_now": "33"
+            "cd": "15",
+            "hp_max": "12",
+            "hp_now": "12"
         },
         {
-            "init": "4",
-            "name": "Стражник",
+            "init": "2",
+            "name": "БОрис",
             "player": "false",
             "surprise": "false",
-            "cd": "14",
-            "hp_max": "10",
-            "hp_now": "10"
+            "cd": "8",
+            "hp_max": "22",
+            "hp_now": "22"
         },
         {
-            "init": "7",
-            "name": "кобольд",
-            "player": "false",
-            "surprise": "false",
-            "cd": "14",
-            "hp_max": "10",
-            "hp_now": "10"
-        },
-        {
-            "init": "16.1",
-            "name": "капитан",
-            "player": "false",
-            "surprise": "false",
-            "cd": "17",
-            "hp_max": "58",
-            "hp_now": "48"
-        },
-        {
-            "init": "16",
-            "name": "пират",
+            "init": "13",
+            "name": "Вирмлинг",
             "player": "false",
             "surprise": "false",
             "cd": "12",
-            "hp_max": "11",
-            "hp_now": "11"
+            "hp_max": "28",
+            "hp_now": "28"
         },
         {
-            "init": "1",
-            "name": "конец раунда",
+            "init": "20",
+            "name": "Окружение",
             "player": "false",
             "surprise": "false",
-            "cd": "14",
-            "hp_max": "10",
-            "hp_now": "10"
+            "cd": "12",
+            "hp_max": "28",
+            "hp_now": "28"
         }
     ],
-    "try": "17",
+    "try": "21",
     "rating": "3",
-    "next": "16.1"
+    "next": "20"
 }
