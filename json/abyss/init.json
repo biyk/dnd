@@ -1,17 +1,17 @@
 {
-    "round": "14",
+    "round": "4",
     "all": [
         {
-            "init": "9",
+            "init": "21.1",
             "name": "Трум",
             "player": "false",
             "surprise": "false",
-            "cd": "12",
+            "cd": "18",
             "hp_max": "57",
             "hp_now": "57"
         },
         {
-            "init": "3",
+            "init": "17.1",
             "name": "Кисель",
             "player": "false",
             "surprise": "false",
@@ -20,16 +20,142 @@
             "hp_now": "64"
         },
         {
-            "init": "1",
-            "name": "Пуддинг",
+            "init": "19",
+            "name": "Литрикс",
+            "player": "false",
+            "surprise": "false",
+            "cd": "21",
+            "hp_max": "58",
+            "hp_now": "58"
+        },
+        {
+            "init": "16",
+            "name": "Сарашана",
+            "player": "false",
+            "surprise": "false",
+            "cd": "15",
+            "hp_max": "47",
+            "hp_now": "47"
+        },
+        {
+            "init": "22",
+            "name": "Павва",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "62",
+            "hp_now": "62"
+        },
+        {
+            "init": "10",
+            "name": "Ильвара",
             "player": "false",
             "surprise": "false",
             "cd": "17",
-            "hp_max": "112",
-            "hp_now": "96"
+            "hp_max": "71",
+            "hp_now": "71"
+        },
+        {
+            "init": "20.2",
+            "name": "Прибдиженные Ильвары",
+            "player": "false",
+            "surprise": "false",
+            "cd": "17",
+            "hp_max": "71",
+            "hp_now": "71"
+        },
+        {
+            "init": "5",
+            "name": "Гиганский паук",
+            "player": "false",
+            "surprise": "false",
+            "cd": "14",
+            "hp_max": "26",
+            "hp_now": "26"
+        },
+        {
+            "init": "21",
+            "name": "жрица дроу",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "71",
+            "hp_now": "71"
+        },
+        {
+            "init": "20.1",
+            "name": "Казук пикшайн",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "71",
+            "hp_now": "71"
+        },
+        {
+            "init": "8",
+            "name": "гном следопыт",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "71",
+            "hp_now": "71"
+        },
+        {
+            "init": "20",
+            "name": "йоклол",
+            "player": "false",
+            "surprise": "false",
+            "cd": "14",
+            "hp_max": "136",
+            "hp_now": "136"
+        },
+        {
+            "init": "15",
+            "name": "дроу",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "71",
+            "hp_now": "71"
+        },
+        {
+            "init": "30",
+            "name": "окружение",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "71",
+            "hp_now": "71"
+        },
+        {
+            "init": "7.1",
+            "name": "Свежеватель разума",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "71",
+            "hp_now": "71"
+        },
+        {
+            "init": "17",
+            "name": "Оркус",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "71",
+            "hp_now": "71"
+        },
+        {
+            "init": "7",
+            "name": "зомби",
+            "player": "false",
+            "surprise": "false",
+            "cd": "16",
+            "hp_max": "71",
+            "hp_now": "71"
         }
     ],
-    "try": "3",
+    "try": "19",
     "rating": "3",
-    "next": "1"
+    "next": "17.1"
 }
